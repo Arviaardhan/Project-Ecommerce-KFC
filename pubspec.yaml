@@ -29,13 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
-
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  http: ^1.1.0
-  google_fonts: ^6.1.0
-  flutter_svg: ^2.0.7
-  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +41,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  cupertino_icons: ^1.0.2
+  http: ^1.1.0
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.7
+  get: ^4.6.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,6 +59,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+    -
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
@@ -75,12 +77,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
