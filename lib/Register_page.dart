@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:project_ecommerce/themes.dart';
 import 'package:get/get.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
-import 'package:project_ecommerce/Register_page.dart';
+import 'package:project_ecommerce/login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +44,33 @@ class LoginPage extends StatelessWidget {
                   height: 40,
                 ),
                 Text(
-                  'Log In',
+                  'Register',
                   style: headerText,
                 ),
                 SizedBox(
                   height: 50,
+                ),
+                Container(
+                  height: 55,
+                  width: 300,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person, color: iconColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: buttonColor),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      hintText: 'Full Name',
+                      hintStyle: hintText,
+                      contentPadding: EdgeInsets.symmetric(vertical: 5),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
                 ),
                 Container(
                   height: 55,
@@ -95,38 +117,20 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                InkWell(
-                  onTap: () {
-                    Get.to(RegisterPage()); 
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Dont have an account?',
-                        style: anotherText,
-                      ),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      Text('Register here', style: linkText,)
-                    ],
-                  ),
-                ),
-                SizedBox(height: 40,),
                 ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: buttonColor,
-                      minimumSize: Size(250, 52),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: buttonColor,
+                    minimumSize: Size(250, 52),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Text('Login',  style: buttonText,))
+                  ),
+                  child: Text('Register', style: buttonText),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
