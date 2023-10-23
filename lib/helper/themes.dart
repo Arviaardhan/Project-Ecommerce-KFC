@@ -34,13 +34,13 @@ TextStyle logoText = GoogleFonts.satisfy(
     textStyle: TextStyle(
           color: headerTextColor,
           fontWeight: FontWeight.w300,
-        fontSize: figmaFontsize(25)));
+        fontSize: figmaFontsize(30)));
 
 TextStyle headerText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: headerTextColor,
         fontWeight: FontWeight.w600,
-        fontSize: figmaFontsize(30)));
+        fontSize: figmaFontsize(35)));
 
 TextStyle hintText = GoogleFonts.poppins(
     textStyle: TextStyle(
@@ -60,6 +60,12 @@ TextStyle linkText = GoogleFonts.poppins(
         fontWeight: FontWeight.w600,
         fontSize: figmaFontsize(18)));
 
+TextStyle menuText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: secondaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(15)));
+
 TextStyle buttonText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: secondaryColor,
@@ -68,3 +74,10 @@ TextStyle buttonText = GoogleFonts.poppins(
 
 // IMAGE ASSETS
 String logoKFC = "logo-kfc-removebg-preview.png";
+String imageHomepage = "homepage-image.png";
+String delivery = "delivery.jpeg";
+String takeAway = "take-away.png";
+String dineIn = "dine-in.jpeg";
+String driveThru = "drive-thru.jpeg";
+String catering = "catering.jpeg";
+String birthDay = "b-day.jpeg";

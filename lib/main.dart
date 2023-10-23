@@ -1,23 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project_ecommerce/themes.dart';
 import 'package:get/get.dart';
-import 'package:project_ecommerce/Register_page.dart';
-import 'package:project_ecommerce/login_page.dart';
+import 'routes/app_pages.dart';
+import 'package:project_ecommerce/pages/login_page.dart';
 
 void main() {
-  runApp(GetMaterialApp(
-    initialRoute: '/',
-    getPages: [
-      GetPage(
-        name: '/',
-        page: () => LoginPage(),
-      ),
-      GetPage(
-        name: '/register',
-        page: () => RegisterPage(),
-      ),
-    ],
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return GetMaterialApp(
+      getPages: AppPages.pages,
       home: LoginPage(),
     );
   }
