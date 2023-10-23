@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_ecommerce/themes.dart';
+import 'package:project_ecommerce/helper/themes.dart';
 import 'package:get/get.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
-import 'package:project_ecommerce/login_page.dart';
+import 'package:project_ecommerce/pages/login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
