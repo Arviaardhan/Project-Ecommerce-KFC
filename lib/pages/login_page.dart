@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:get/get.dart';
 import 'package:project_ecommerce/controllers/login_controller.dart';
-import 'package:project_ecommerce/pages/Register_page.dart';
+import 'package:project_ecommerce/pages/register_page.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({Key? key}) : super(key: key);

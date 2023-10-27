@@ -3,6 +3,7 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:get/get.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
 import 'package:project_ecommerce/pages/login_page.dart';
+import 'package:project_ecommerce/controllers/register_controller.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -118,7 +119,10 @@ class RegisterPage extends StatelessWidget {
                   height: 10,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final registerController = Get.find<RegisterController>();
+                    registerController.registerUser();
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: buttonColor,
                     minimumSize: Size(250, 52),
