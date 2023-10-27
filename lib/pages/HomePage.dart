@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
 
 class HomePage extends StatefulWidget {
