@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_ecommerce/pages/splash_screen.dart';
 import 'routes/app_pages.dart';
 import 'package:project_ecommerce/pages/login_page.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: AppPages.pages,
-      home: LoginPage(),
+      home: SplashScreen(),
     );
   }
 }

@@ -2,60 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:get/get.dart';
 import 'package:project_ecommerce/controllers/login_controller.dart';
-import 'package:project_ecommerce/pages/register_page.dart';
 
-class LoginPage extends GetView<LoginController> {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  final controller = Get.put(LoginController());
 
-  Widget myText(){
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 20,),
-          Text('Log In', style: headerText),
-          Container(
-            height: 65,
-            width: 319,
-            margin: EdgeInsets.only(top: 45),
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email_outlined, color: iconColor),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: buttonColor),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                hintText: 'Email',
-                hintStyle: hintText,
-                contentPadding: EdgeInsets.symmetric(vertical: 12),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 65,
-            width: 320,
-            margin: EdgeInsets.only(top: 13),
-            child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock, color: iconColor),
-                contentPadding: EdgeInsets.symmetric(vertical: 12),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: buttonColor),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                hintText: 'Password',
-                hintStyle: hintText,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-            ),
-          ),
-        ],
+  Widget myForm(BuildContext context, String label, bool obscure, IconData icon, TextInputType inputType, TextEditingController? controller){
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return TextField(
+      controller: controller,
+      obscureText: obscure,
+      cursorColor: borderColor,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: borderColor),
+        prefixIcon: Icon(icon, color: iconColor,),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: borderColor),
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
+        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 12),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
+        ),
       ),
     );
   }
@@ -67,7 +36,7 @@ class LoginPage extends GetView<LoginController> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Image.asset('assets/logo-kfc-removebg-preview.png', width: 170),
+            child: Image.asset(logoKFC, width: 170),
           ),
           Text(
             'Jagonya ayam',
@@ -91,7 +60,20 @@ class LoginPage extends GetView<LoginController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                myText(),
+                SizedBox(height: 30,),
+                Text('Login', style: headerText),
+                Container(
+                  height: 120,
+                  width: 309,
+                  margin: EdgeInsets.only(top: 45),
+                  child: Column(
+                    children: [
+                      myForm(context, 'Email', false, Icons.email_outlined, TextInputType.emailAddress, controller.ctrEmail),
+                      SizedBox(height: 20),
+                      myForm(context, 'Password', true, Icons.lock_outline, TextInputType.visiblePassword, controller.ctrPassword),
+                    ],
+                  ),
+                ),
                 SizedBox(height: 10,),
                 InkWell(
                   mouseCursor: SystemMouseCursors.click,
@@ -115,11 +97,10 @@ class LoginPage extends GetView<LoginController> {
                   cursor: SystemMouseCursors.click,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.offNamed("/home");
                       controller.login();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: buttonColor,
+                      backgroundColor: primaryColor,
                       minimumSize: Size(250, 52),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),

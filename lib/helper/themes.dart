@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // COLOR
-const Color buttonColor = Color(0xFFE7002B);
+const Color primaryColor = Color(0xFFE7002B);
 const Color headerTextColor = Colors.black;
 const Color hintTextColor = Color(0xFF8A8A8A);
 const Color iconColor = Color(0xFF2D2D2D);
@@ -56,7 +56,7 @@ TextStyle anotherText = GoogleFonts.poppins(
 
 TextStyle linkText = GoogleFonts.poppins(
     textStyle: TextStyle(
-        color: buttonColor,
+        color: primaryColor,
         fontWeight: FontWeight.w600,
         fontSize: figmaFontsize(18)));
 
@@ -73,11 +73,11 @@ TextStyle buttonText = GoogleFonts.poppins(
         fontSize: figmaFontsize(20)));
 
 // IMAGE ASSETS
-String logoKFC = "logo-kfc-removebg-preview.png";
-String imageHomepage = "homepage-image.png";
-String delivery = "delivery.jpeg";
-String takeAway = "take-away.png";
-String dineIn = "dine-in.jpeg";
-String driveThru = "drive-thru.jpeg";
-String catering = "catering.jpeg";
-String birthDay = "b-day.jpeg";
+String logoKFC = "assets/logo-kfc-removebg-preview.png";
+String imageHomepage = "assets/homepage-image.png";
+String delivery = "assets/delivery.jpeg";
+String takeAway = "assets/take-away.png";
+String dineIn = "assets/dine-in.jpeg";
+String driveThru = "assets/drive-thru.jpeg";
+String catering = "assets/catering.jpeg";
+String birthDay = "assets/b-day.jpeg";
