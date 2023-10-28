@@ -58,7 +58,7 @@ class RegisterPage extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person, color: iconColor),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: buttonColor),
+                        borderSide: BorderSide(color: primaryColor),
                         borderRadius: BorderRadius.circular(25),
                       ),
                       hintText: 'Full Name',
@@ -80,7 +80,7 @@ class RegisterPage extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email_outlined, color: iconColor),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: buttonColor),
+                        borderSide: BorderSide(color: primaryColor),
                         borderRadius: BorderRadius.circular(25),
                       ),
                       hintText: 'Email',
@@ -103,7 +103,7 @@ class RegisterPage extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock, color: iconColor),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: buttonColor),
+                        borderSide: BorderSide(color: primaryColor),
                         borderRadius: BorderRadius.circular(25),
                       ),
                       hintText: 'Password',
@@ -124,7 +124,7 @@ class RegisterPage extends StatelessWidget {
                     registerController.registerUser();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonColor,
+                    backgroundColor: primaryColor,
                     minimumSize: Size(250, 52),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:project_ecommerce/controllers/home_controller.dart';
+import 'package:project_ecommerce/controllers/profile_controller.dart';
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/profile_page.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-  HomeController homeController = Get.put(HomeController());
+class ProfilePage extends StatelessWidget {
+  ProfilePage({Key? key}) : super(key: key);
+  ProfileController profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,7 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ElevatedButton(onPressed:() {
-              Get.to(ProfilePage());
-            }, child: Text("Profile"))
+            Obx(()=> Text('user logged '+profileController.strName.value)),
           ],
         ),
       ),
