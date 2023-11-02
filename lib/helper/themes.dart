@@ -81,3 +81,7 @@ String dineIn = "assets/dine-in.jpeg";
 String driveThru = "assets/drive-thru.jpeg";
 String catering = "assets/catering.jpeg";
 String birthDay = "assets/b-day.jpeg";
+String superKomplit = "asset/super-komplit.jpg";
+String cornRoasted = "asset/corn-roasted.jpg";
+String snackBucket = "asset/snack-bucket.jpg";
+String doubleKimchi = "asset/double-kimchi.jpg";

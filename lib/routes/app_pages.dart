@@ -5,6 +5,7 @@ import 'package:project_ecommerce/pages/register_page.dart';
 import 'package:project_ecommerce/pages/login_page.dart';
 import 'package:project_ecommerce/pages/HomePage.dart';
 import 'package:project_ecommerce/routes/route_name.dart';
+import 'package:project_ecommerce/pages/splash_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -21,6 +22,10 @@ class AppPages {
     GetPage(
       name: RouteName.home,
       page: () => HomePage(),
+    ),
+    GetPage(
+      name: RouteName.splash,
+      page: () => SplashScreen(),
     ),
   ];
 }
