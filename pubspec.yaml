@@ -70,6 +70,12 @@ flutter:
     - assets/drive-thru.jpeg
     - assets/catering.jpeg
     - assets/b-day.jpeg
+    - assets/corn-roasted.jpg
+    - assets/double-kimchi.jpg
+    - assets/snack-bucket.jpg
+    - assets/super-komplit.jpg
+
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

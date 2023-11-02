@@ -20,7 +20,7 @@ class SplashController extends GetxController {
       if(prefs.getString('username') == null){
         Get.off(LoginPage());
       }else{
-        Get.off(HomePage());
+        Get.off(() => LoginPage());
       }
     });
   }
