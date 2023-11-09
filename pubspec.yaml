@@ -34,8 +34,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.1.0
   google_fonts: ^6.1.0
-  flutter_svg: ^2.0.7
+  flutter_svg: ^1.1.6
   get: ^4.6.6
+  iconify_flutter: ^0.0.4
+  shimmer: ^3.0.0
   shared_preferences:
 
 dev_dependencies:
@@ -72,7 +74,7 @@ flutter:
     - assets/b-day.jpeg
     - assets/corn-roasted.jpg
     - assets/double-kimchi.jpg
-    - assets/snack-bucket.jpg
+    - assets/kfc-snck-bucket.png
     - assets/super-komplit.jpg
 
 
