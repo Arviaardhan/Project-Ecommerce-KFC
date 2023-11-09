@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/HomePage.dart';
+import 'package:project_ecommerce/pages/home_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,15 +37,15 @@ class LoginController extends GetxController {
           final token = getToken['token'];
           await prefs.setString('username', ctrEmail!.text);
           print('Token : $token');
-          Get.snackbar('Success', 'Login Success',
-              duration: Duration(seconds: 3));
+          Get.snackbar('Success', 'Login Success', duration: Duration(seconds: 3));
           Get.off(HomePage());
-          isLoading.value = false;
+          isLoading.value = true;
         } else {
           final Map<String, dynamic> getMessage = jsonDecode(response.body);
           final message = getMessage['message'];
           Get.snackbar('Sorry', message, duration: Duration(seconds: 3));
         }
+        isLoading.value = false;
       } else {
         Get.snackbar(
           'Sorry',

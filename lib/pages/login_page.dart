@@ -1,33 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project_ecommerce/helper/themes.dart';
+import 'package:project_ecommerce/widgets/widget.dart';
 import 'package:get/get.dart';
 import 'package:project_ecommerce/controllers/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   final controller = Get.put(LoginController());
-
-  Widget myForm(BuildContext context, String label, bool obscure, IconData icon, TextInputType inputType, TextEditingController? controller){
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-    return TextField(
-      controller: controller,
-      obscureText: obscure,
-      cursorColor: borderColor,
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: TextStyle(color: borderColor),
-        prefixIcon: Icon(icon, color: iconColor,),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: borderColor),
-          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
-        ),
-        contentPadding: EdgeInsets.symmetric(vertical: 12),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

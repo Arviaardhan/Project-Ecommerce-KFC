@@ -8,6 +8,8 @@ const Color hintTextColor = Color(0xFF8A8A8A);
 const Color iconColor = Color(0xFF2D2D2D);
 const Color borderColor = Color(0xFF656565);
 const Color secondaryColor = Colors.white;
+const Color backgroundColor = Color(0xFFEBEBEB);
+const Color viewDetailColor = Color(0xFF575757);
 
 figmaFontsize(int fontSize) {
   return fontSize * 0.95;
@@ -32,37 +34,55 @@ class AppThemesWeight {
 //FONT STYLES
 TextStyle logoText = GoogleFonts.satisfy(
     textStyle: TextStyle(
-          color: headerTextColor,
-          fontWeight: FontWeight.w300,
+        color: headerTextColor,
+        fontWeight: FontWeight.w300,
         fontSize: figmaFontsize(30)));
 
 TextStyle headerText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: headerTextColor,
-        fontWeight: FontWeight.w600,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(35)));
+
+TextStyle headerText2 = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(25)));
+
+TextStyle recommendedText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: primaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(15)));
+
+TextStyle detailText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: viewDetailColor,
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(9)));
 
 TextStyle hintText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: hintTextColor,
-        fontWeight: FontWeight.w400,
+        fontWeight: AppThemesWeight.regular,
         fontSize: figmaFontsize(20)));
 
 TextStyle anotherText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: hintTextColor,
-        fontWeight: FontWeight.w400,
+        fontWeight: AppThemesWeight.regular,
         fontSize: figmaFontsize(12)));
 
 TextStyle linkText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: primaryColor,
-        fontWeight: FontWeight.w600,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(18)));
 
 TextStyle menuText = GoogleFonts.poppins(
     textStyle: TextStyle(
-        color: secondaryColor,
+        color: headerTextColor,
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(15)));
 
@@ -81,7 +101,7 @@ String dineIn = "assets/dine-in.jpeg";
 String driveThru = "assets/drive-thru.jpeg";
 String catering = "assets/catering.jpeg";
 String birthDay = "assets/b-day.jpeg";
-String superKomplit = "asset/super-komplit.jpg";
-String cornRoasted = "asset/corn-roasted.jpg";
-String snackBucket = "asset/snack-bucket.jpg";
-String doubleKimchi = "asset/double-kimchi.jpg";
+String superKomplit = "assets/super-komplit.jpg";
+String cornRoasted = "assets/corn-roasted.jpg";
+String snackBucket = "assets/kfc-snck-bucket.png";
+String doubleKimchi = "assets/double-kimchi.jpg";

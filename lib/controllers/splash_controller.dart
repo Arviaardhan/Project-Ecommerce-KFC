@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/HomePage.dart';
+import 'package:project_ecommerce/pages/home_page.dart';
 import 'package:project_ecommerce/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,7 +20,7 @@ class SplashController extends GetxController {
       if(prefs.getString('username') == null){
         Get.off(LoginPage());
       }else{
-        Get.off(() => LoginPage());
+        Get.off(() => HomePage());
       }
     });
   }

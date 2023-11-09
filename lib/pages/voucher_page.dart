@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
-import 'package:project_ecommerce/helper/themes.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:project_ecommerce/controllers/profile_controller.dart';
-import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/voucher_page.dart';
-import 'package:project_ecommerce/widgets/widget.dart';
+import 'package:project_ecommerce/pages/profile_page.dart';
 
+import '../helper/themes.dart';
 import 'home_page.dart';
 import 'order_page.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({Key? key}) : super(key: key);
-  ProfileController profileController = Get.put(ProfileController());
+class VoucherPage extends StatelessWidget {
+  const VoucherPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Obx(()=> Text('user logged '+profileController.strName.value)),
-          ],
-        ),
-      ),
+      body: Center(child: Text("Ini Voucher Page")),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
