@@ -20,7 +20,9 @@ class LoginPage extends StatelessWidget {
             'Jagonya ayam',
             style: logoText,
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             height: 490,
             width: 350,
@@ -38,7 +40,9 @@ class LoginPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Text('Login', style: headerText),
                 Container(
                   height: 120,
@@ -46,13 +50,22 @@ class LoginPage extends StatelessWidget {
                   margin: EdgeInsets.only(top: 45),
                   child: Column(
                     children: [
-                      myForm(context, 'Email', false, Icons.email_outlined, TextInputType.emailAddress, controller.ctrEmail),
+                      myForm(context, 'Email', false, Icons.email_outlined,
+                          TextInputType.emailAddress, controller.ctrEmail),
                       SizedBox(height: 20),
-                      myForm(context, 'Password', true, Icons.lock_outline, TextInputType.visiblePassword, controller.ctrPassword),
+                      myForm(
+                          context,
+                          'Password',
+                          true,
+                          Icons.lock_outline,
+                          TextInputType.visiblePassword,
+                          controller.ctrPassword),
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 InkWell(
                   mouseCursor: SystemMouseCursors.click,
                   onTap: () {
@@ -70,7 +83,9 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 25,),
+                SizedBox(
+                  height: 25,
+                ),
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: ElevatedButton(

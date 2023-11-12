@@ -26,12 +26,15 @@ class SuperKomplit extends StatelessWidget {
                     .length,
                 itemBuilder: (BuildContext context, int index) {
                   final kfc = kfcController.kfcresponsemodel[0];
-                  final comboItems = kfc.menu.where((item) => item.category == Category.COMBO).toList();
+                  final comboItems = kfc.menu
+                      .where((item) => item.category == Category.COMBO)
+                      .toList();
                   final menuItem = comboItems[index];
                   final harga = menuItem.price;
                   return Container(
                     child: ListTile(
-                      contentPadding: EdgeInsets.only(top: 19, bottom: 19, left: 10),
+                      contentPadding:
+                          EdgeInsets.only(top: 19, bottom: 19, left: 10),
                       leading: Container(
                         child: Image.network(menuItem.image),
                       ),
@@ -39,8 +42,7 @@ class SuperKomplit extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(menuItem.name),
-                          for (var foodItem in menuItem.food)
-                            Text(foodItem),
+                          for (var foodItem in menuItem.food) Text(foodItem),
                           Text("Rp.$harga"),
                         ],
                       ),

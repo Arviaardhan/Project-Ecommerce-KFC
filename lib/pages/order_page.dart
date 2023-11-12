@@ -35,7 +35,7 @@ class OrderPage extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => OrderPage());
                 },
-                icon: Iconify(Mdi.cart_outline,  color: primaryColor),
+                icon: Iconify(Mdi.cart_outline, color: primaryColor),
               ),
             ),
             label: "My Order",
