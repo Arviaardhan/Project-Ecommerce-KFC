@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Obx(()=> Text('user logged '+profileController.strName.value)),
+            Obx(() => Text('user logged ' + profileController.strName.value)),
           ],
         ),
       ),
@@ -44,7 +44,7 @@ class ProfilePage extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => OrderPage());
                 },
-                icon: Iconify(Mdi.cart_outline,  color: primaryColor),
+                icon: Iconify(Mdi.cart_outline, color: primaryColor),
               ),
             ),
             label: "My Order",

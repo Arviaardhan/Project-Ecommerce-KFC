@@ -15,7 +15,8 @@ class RegisterPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Image.asset('assets/logo-kfc-removebg-preview.png', width: 170),
+            child:
+                Image.asset('assets/logo-kfc-removebg-preview.png', width: 170),
           ),
           Text(
             'Jagonya ayam',

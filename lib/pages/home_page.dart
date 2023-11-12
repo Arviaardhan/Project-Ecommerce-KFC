@@ -61,22 +61,26 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        myRecommended(context, 'PAKET SUPER KOMPLIT', 'View Details', superKomplit, 5, () {
+                        myRecommended(context, 'PAKET SUPER KOMPLIT',
+                            'View Details', superKomplit, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => SuperKomplit(),
                           ));
                         }),
-                        myRecommended(context, 'PAKET ROASTED CORN', 'View Details', cornRoasted, 5, () {
+                        myRecommended(context, 'PAKET ROASTED CORN',
+                            'View Details', cornRoasted, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => FullMenu(),
                           ));
                         }),
-                        myRecommended(context, 'PAKET SNACK BUCKET', 'View Details', snackBucket, 5, () {
+                        myRecommended(context, 'PAKET SNACK BUCKET',
+                            'View Details', snackBucket, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => FullMenu(),
                           ));
                         }),
-                        myRecommended(context, 'PAKET DOUBLE DOWN KIMCHI', 'View Details', doubleKimchi, 5, () {
+                        myRecommended(context, 'PAKET DOUBLE DOWN KIMCHI',
+                            'View Details', doubleKimchi, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => FullMenu(),
                           ));
@@ -103,7 +107,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => OrderPage());
                 },
-                icon: Iconify(Mdi.cart_outline,  color: primaryColor),
+                icon: Iconify(Mdi.cart_outline, color: primaryColor),
               ),
             ),
             label: "My Order",
@@ -132,4 +136,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

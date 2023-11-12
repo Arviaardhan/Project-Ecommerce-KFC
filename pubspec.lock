@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  evil_icons_flutter:
+    dependency: "direct main"
+    description:
+      name: evil_icons_flutter
+      sha256: "17e2f0fc7c007eda45087d3e31a4b7ba837f1fdf2b9b014bee56542730286616"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   fake_async:
     dependency: transitive
     description:
