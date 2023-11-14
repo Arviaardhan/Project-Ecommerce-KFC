@@ -10,6 +10,8 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final registerController = Get.find<RegisterController>();
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,19 +52,21 @@ class RegisterPage extends StatelessWidget {
                   style: headerText,
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 20, // Adjusted the height
                 ),
                 Container(
                   height: 55,
                   width: 300,
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller:
+                        registerController.cUsername, // Added controller
+                    decoration: InputDecoration( 
                       prefixIcon: Icon(Icons.person, color: iconColor),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: primaryColor),
                         borderRadius: BorderRadius.circular(25),
                       ),
-                      hintText: 'Full Name',
+                      hintText: 'Username', // Changed hint to 'Username'
                       hintStyle: hintText,
                       contentPadding: EdgeInsets.symmetric(vertical: 5),
                       border: OutlineInputBorder(
@@ -78,6 +82,7 @@ class RegisterPage extends StatelessWidget {
                   height: 55,
                   width: 300,
                   child: TextField(
+                    controller: registerController.cEmail, // Added controller
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email_outlined, color: iconColor),
                       focusedBorder: OutlineInputBorder(
@@ -100,6 +105,7 @@ class RegisterPage extends StatelessWidget {
                   height: 55,
                   width: 300,
                   child: TextField(
+                    controller: registerController.cPass,
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock, color: iconColor),
@@ -121,8 +127,7 @@ class RegisterPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    final registerController = Get.find<RegisterController>();
-                    registerController.registerUser();
+                    registerController.Register();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
