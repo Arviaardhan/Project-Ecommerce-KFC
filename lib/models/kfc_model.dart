@@ -26,6 +26,7 @@ class KfcResponseModel {
 }
 
 class Menu {
+  int id;
   String name;
   double price;
   int drink;
@@ -35,6 +36,7 @@ class Menu {
   List<String> food;
 
   Menu({
+    required this.id,
     required this.name,
     required this.price,
     required this.drink,
@@ -45,6 +47,7 @@ class Menu {
   });
 
   factory Menu.fromJson(Map<String, dynamic> json) => Menu(
+    id: json["id"],
     name: json["name"],
     price: json["price"]?.toDouble(),
     drink: json["drink"],
@@ -55,6 +58,7 @@ class Menu {
   );
 
   Map<String, dynamic> toJson() => {
+    "id": id,
     "name": name,
     "price": price,
     "drink": drink,

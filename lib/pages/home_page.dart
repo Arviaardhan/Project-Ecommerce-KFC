@@ -6,7 +6,9 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:project_ecommerce/controllers/home_controller.dart';
 import 'package:project_ecommerce/pages/detail_pages/detail_page_full_menu.dart';
-import 'package:project_ecommerce/pages/detail_pages/detail_page_super_komplit.dart';
+import 'package:project_ecommerce/pages/detail_pages/detail_page_super_alacarte.dart';
+import 'package:project_ecommerce/pages/detail_pages/detail_page_super_special.dart';
+import 'package:project_ecommerce/pages/detail_pages/detail_page_super_combo.dart';
 import 'package:project_ecommerce/pages/order_page.dart';
 import 'package:project_ecommerce/pages/profile_page.dart';
 import 'package:project_ecommerce/pages/voucher_page.dart';
@@ -38,12 +40,12 @@ class HomePage extends StatelessWidget {
               crossAxisCount: 3,
               shrinkWrap: true,
               children: [
-                myMenu(context, 'Delivery', delivery),
-                myMenu(context, 'Take Away', takeAway),
-                myMenu(context, 'Dine In', dineIn),
-                myMenu(context, 'Drive Thru', driveThru),
-                myMenu(context, 'Catering', catering),
-                myMenu(context, 'Bday', birthDay),
+                myMenu(context, 'Delivery', delivery, FullMenu()),
+                myMenu(context, 'Take Away', takeAway, FullMenu()),
+                myMenu(context, 'Dine In', dineIn, FullMenu()),
+                myMenu(context, 'Drive Thru', driveThru, FullMenu()),
+                myMenu(context, 'Catering', catering, FullMenu()),
+                myMenu(context, 'Bday', birthDay, FullMenu()),
               ],
             ),
             Column(
@@ -61,28 +63,22 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        myRecommended(context, 'PAKET SUPER KOMPLIT',
+                        myRecommended(context, 'PAKET SUPER COMBO',
                             'View Details', superKomplit, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SuperKomplit(),
+                            builder: (context) => SuperCombo(),
                           ));
                         }),
-                        myRecommended(context, 'PAKET ROASTED CORN',
+                        myRecommended(context, 'PAKET SUPER SPECIAL',
                             'View Details', cornRoasted, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => FullMenu(),
+                            builder: (context) => SuperSpecial(),
                           ));
                         }),
-                        myRecommended(context, 'PAKET SNACK BUCKET',
+                        myRecommended(context, 'PAKET SUPER ALACARTE',
                             'View Details', snackBucket, 5, () {
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => FullMenu(),
-                          ));
-                        }),
-                        myRecommended(context, 'PAKET DOUBLE DOWN KIMCHI',
-                            'View Details', doubleKimchi, 5, () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => FullMenu(),
+                            builder: (context) => SuperAlacarte(),
                           ));
                         }),
                       ],

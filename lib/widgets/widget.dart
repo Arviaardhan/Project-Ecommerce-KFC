@@ -1,10 +1,15 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 import 'package:project_ecommerce/helper/themes.dart';
-import 'dart:io';
+
+import '../controllers/kfc_controller.dart';
+import 'package:project_ecommerce/models/order_model.dart';
 
 // form text
 Widget myForm(BuildContext context, String label, bool obscure, IconData icon, TextInputType inputType, TextEditingController? controller) {
@@ -35,34 +40,39 @@ Widget myForm(BuildContext context, String label, bool obscure, IconData icon, T
 }
 
 // gridview menu card
-Widget myMenu(BuildContext context, String label, String image) {
+Widget myMenu(BuildContext context, String label, String image, Widget page) {
   double screenHeight = MediaQuery.of(context).size.height;
   double screenWidth = MediaQuery.of(context).size.width;
 
-  return Container(
-    child: Card(
-      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: screenWidth * 0.18,
-            height: screenHeight * 0.10,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              image: DecorationImage(
-                image: AssetImage(image),
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+    },
+    child: Container(
+      child: Card(
+        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+        child: Column(
+          children: <Widget>[
+            Container(
+              width: screenWidth * 0.18,
+              height: screenHeight * 0.12,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                image: DecorationImage(
+                  image: AssetImage(image),
+                ),
               ),
             ),
-          ),
-          FittedBox(
-            fit: BoxFit.fill,
-            child: Text(
-              label,
-              style: menuText,
-              textAlign: TextAlign.center,
+            FittedBox(
+              fit: BoxFit.fill,
+              child: Text(
+                label,
+                style: menuText,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
   );
@@ -137,7 +147,7 @@ Widget myRecommended(BuildContext context, String title, String subTitle, String
   );
 }
 
-myDetailCard(BuildContext context, String title, String desc, String image, double price,) {
+Widget myDetailCard(BuildContext context, String title, String desc, String image, double price,) {
   double screenHeight = MediaQuery.of(context).size.height;
   double screenWidth = MediaQuery.of(context).size.width;
 
@@ -181,5 +191,53 @@ myDetailCard(BuildContext context, String title, String desc, String image, doub
         ],
       ),
     ),
+  );
+}
+
+Widget myAddButton(BuildContext context, String label, String icon, KfcController kfcController, int index) {
+  return Container(
+      height: 35,
+      width: 100,
+      child: ElevatedButton(
+          onPressed: () {
+            if (kfcController.kfcOrder.isNotEmpty) {
+              final OrderModel menuItem = kfcController.kfcOrder[index];
+
+              final OrderModel orderModel = OrderModel(
+                name: menuItem.name,
+                food: menuItem.food,
+                image: menuItem.image,
+                price: menuItem.price ?? 0.0,
+                quantity: 1,
+              );
+
+              kfcController.addToOrderPage(orderModel);
+
+              Get.snackbar(
+                'Item Added',
+                'Telah ditambahkan ke Order Page',
+                snackPosition: SnackPosition.TOP,
+                duration: Duration(seconds: 3),
+              );
+
+            } else {
+              print('Error: kfcOrder is empty');
+            }
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20)
+            )
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Iconify(icon, color: Colors.white, size: 24,),
+              SizedBox(width: 5,),
+              Text(label, style: textIcon,),
+            ],
+          )
+      )
   );
 }

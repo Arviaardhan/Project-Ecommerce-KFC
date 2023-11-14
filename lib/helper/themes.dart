@@ -10,6 +10,7 @@ const Color borderColor = Color(0xFF656565);
 const Color secondaryColor = Colors.white;
 const Color backgroundColor = Color(0xFFEBEBEB);
 const Color viewDetailColor = Color(0xFF575757);
+const Color foodMenuColor = Color(0xFF767676);
 
 figmaFontsize(int fontSize) {
   return fontSize * 0.95;
@@ -91,6 +92,25 @@ TextStyle buttonText = GoogleFonts.poppins(
         color: secondaryColor,
         fontWeight: FontWeight.w600,
         fontSize: figmaFontsize(20)));
+
+TextStyle namePriceMenu = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: FontWeight.w600,
+        fontSize: figmaFontsize(23)));
+
+TextStyle foodMenu = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: foodMenuColor,
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        fontSize: figmaFontsize(14)));
+
+TextStyle textIcon = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: secondaryColor,
+        fontWeight: FontWeight.w600,
+        fontSize: figmaFontsize(14)));
 
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";

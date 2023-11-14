@@ -2,10 +2,13 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_ecommerce/models/kfc_model.dart';
 
+import '../models/order_model.dart';
+
 class KfcController extends GetxController{
   RxInt index = 0.obs;
   var isLoading = true.obs;
   RxList<KfcResponseModel> kfcresponsemodel = <KfcResponseModel>[].obs;
+  RxList<OrderModel> kfcOrder = <OrderModel>[].obs;
 
   @override
   void onInit() {
@@ -31,5 +34,17 @@ class KfcController extends GetxController{
     } catch (e){
       print(e);
     }
+  }
+
+  void addToOrderPage(OrderModel orderModel) {
+    kfcOrder.add(orderModel);
+  }
+
+  void updateTotalPrice(OrderModel orderItem, int quantity) {
+    orderItem.quantity = quantity;
+    if (orderItem.quantity < 0) {
+      orderItem.quantity = 0;
+    }
+    kfcOrder.refresh();
   }
 }

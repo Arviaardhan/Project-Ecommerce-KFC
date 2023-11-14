@@ -8,15 +8,73 @@ import 'package:project_ecommerce/pages/home_page.dart';
 import 'package:project_ecommerce/pages/profile_page.dart';
 import 'package:project_ecommerce/pages/voucher_page.dart';
 
+import '../controllers/kfc_controller.dart';
 import '../helper/themes.dart';
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({Key? key}) : super(key: key);
+  OrderPage({Key? key}) : super(key: key);
+
+  final kfcController = Get.put(KfcController());
+
+  double calculateTotalPrice() {
+    double total = 0;
+    for (var orderItem in kfcController.kfcOrder) {
+      total += (orderItem.price ?? 0) * orderItem.quantity;
+    }
+    return total;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Ini Order page")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Your Order", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            SizedBox(height: 20),
+            Expanded(
+              child: Obx(
+                    () => ListView.builder(
+                  itemCount: kfcController.kfcOrder.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final orderItem = kfcController.kfcOrder[index];
+                    return ListTile(
+                      title: Text(orderItem.name),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (var foodItem in orderItem.food) Text(foodItem),
+                          Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.remove),
+                                onPressed: () {
+                                  kfcController.updateTotalPrice(orderItem, orderItem.quantity - 1);
+                                },
+                              ),
+                              Text(orderItem.quantity.toString()), // Display quantity
+                              IconButton(
+                                icon: Icon(Icons.add),
+                                onPressed: () {
+                                  kfcController.updateTotalPrice(orderItem, orderItem.quantity + 1);
+                                },
+                              ),
+                            ],
+                          ),
+                          Text("Rp.${(orderItem.price ?? 0) * orderItem.quantity}"), // Updated price based on quantity
+                        ],
+                      ),
+                      leading: Image.network(orderItem.image),
+                    );
+                  },
+                ),
+              ),
+            ),
+            Text("Total: Rp.${calculateTotalPrice()}"),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -35,7 +93,7 @@ class OrderPage extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => OrderPage());
                 },
-                icon: Iconify(Mdi.cart_outline, color: primaryColor),
+                icon: Iconify(Mdi.cart_outline,  color: primaryColor),
               ),
             ),
             label: "My Order",
