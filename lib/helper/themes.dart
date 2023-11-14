@@ -105,3 +105,6 @@ String superKomplit = "assets/super-komplit.jpg";
 String cornRoasted = "assets/corn-roasted.jpg";
 String snackBucket = "assets/kfc-snck-bucket.png";
 String doubleKimchi = "assets/double-kimchi.jpg";
+String alacatre = "assets/alacatre-snack.png";
+String paketCombo = "assets/paket-combo.jpg";
+String paketSpesial = "assets/paket-spesial.jpg";

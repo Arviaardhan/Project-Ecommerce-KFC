@@ -4,7 +4,6 @@ import 'package:project_ecommerce/pages/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
-
   late final SharedPreferences prefs;
 
   @override
@@ -16,11 +15,13 @@ class SplashController extends GetxController {
 
   void checkSharedPreference() async {
     prefs = await SharedPreferences.getInstance();
-    Future.delayed(Duration(seconds: 5), () async {
-      if(prefs.getString('username') == null){
-        Get.off(LoginPage());
-      }else{
-        Get.off(() => HomePage());
+    final username = prefs.getString('username');
+
+    Future.delayed(Duration(seconds: 5), () {
+      if (username == null) {
+        Get.offNamed("/login");
+      } else {
+        Get.off(() => LoginPage());
       }
     });
   }
