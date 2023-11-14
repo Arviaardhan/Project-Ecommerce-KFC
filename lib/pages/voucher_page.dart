@@ -24,7 +24,6 @@ class VoucherPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            width: 393,
             height: 50,
             decoration: BoxDecoration(
               color: Colors.white,
