@@ -148,7 +148,8 @@ class VoucherPage extends StatelessWidget {
                                             fit: BoxFit.cover,
                                           ),
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
                                         ),
                                       ),
@@ -159,7 +160,8 @@ class VoucherPage extends StatelessWidget {
                                       child: Container(
                                         width: 160,
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               voucher.name,
@@ -174,7 +176,9 @@ class VoucherPage extends StatelessWidget {
                                             SizedBox(height: 8),
                                             Row(
                                               children: [
-                                                Iconify(Mdi.clock, color: Color(0xFFE7002B), size: 15),
+                                                Iconify(Mdi.clock,
+                                                    color: Color(0xFFE7002B),
+                                                    size: 15),
                                                 SizedBox(width: 4),
                                                 Text(
                                                   voucher.limit,
