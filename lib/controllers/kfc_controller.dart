@@ -38,8 +38,9 @@ class KfcController extends GetxController{
     }
   }
 
-  void addToOrderPage(OrderModel orderModel) {
-    kfcOrder.add(orderModel);
+  void addToOrderPage(String name, List<String> food, String image, double price) {
+    kfcOrder.add(OrderModel(name: name, food: food, image: image, price: price));
+    kfcOrder.refresh();
   }
 
   void updateTotalPrice(OrderModel orderItem, int quantity) {

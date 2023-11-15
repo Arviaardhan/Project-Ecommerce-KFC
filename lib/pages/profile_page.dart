@@ -19,10 +19,11 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
-          children: <Widget>[
+          children: [
             Obx(() => Text('user logged ' + profileController.strName.value)),
+            Image(image: AssetImage(logoUser), width: 100, height: 100,),
           ],
         ),
       ),

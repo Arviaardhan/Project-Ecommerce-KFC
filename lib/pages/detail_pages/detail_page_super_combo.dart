@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
@@ -31,72 +32,96 @@ class SuperCombo extends StatelessWidget {
                     .where((item) => item.category == Category.COMBO)
                     .length,
                 itemBuilder: (BuildContext context, int index) {
+                  print("data ${kfcController.kfcresponsemodel.length}");
                   final kfc = kfcController.kfcresponsemodel[0];
                   final comboItems = kfc.menu
                       .where((item) => item.category == Category.COMBO)
                       .toList();
                   final menuItem = comboItems[index];
                   final harga = menuItem.price;
-                  return GestureDetector(
-                    onTap: () {
-                      // Navigate to the detail menu page
-                      Get.to(() => DetailMenuPage(menuItem: menuItem));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      width: 370,
-                      height: 200,
-                      child: Card(
-                        margin: EdgeInsets.only(left: 15, right: 15),
-                        elevation: 4,
-                        shadowColor: Colors.grey,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                  return Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    width: 370,
+                    height: 200,
+                    child: Card(
+                      margin: EdgeInsets.only(left: 15, right: 15),
+                      elevation: 4,
+                      shadowColor: Colors.grey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.only(
+                          top: 17,
                         ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.only(
-                            top: 17,
+                        leading: Container(
+                          margin: EdgeInsets.only(left: 30, right: 20),
+                          child: Image.network(
+                            menuItem.image,
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
                           ),
-                          leading: Container(
-                            margin: EdgeInsets.only(left: 30, right: 20),
-                            child: Image.network(
-                              menuItem.image,
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
+                        ),
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              menuItem.name,
+                              style: namePriceMenu,
                             ),
-                          ),
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            SizedBox(height: 10),
+                            for (var foodItem in menuItem.food)
                               Text(
-                                menuItem.name,
-                                style: namePriceMenu,
+                                foodItem,
+                                style: foodMenu,
                               ),
-                              SizedBox(height: 10),
-                              for (var foodItem in menuItem.food)
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
                                 Text(
-                                  foodItem,
-                                  style: foodMenu,
+                                  "Rp. $harga",
+                                  style: namePriceMenu,
                                 ),
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Rp. $harga",
-                                    style: namePriceMenu,
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 40,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      left: 40,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20)
+                                      )
                                     ),
-                                    child: myAddButton(context, "Add",
-                                        Mdi.cart_add, kfcController, index),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                    onPressed: (() {
+                                      kfcController.addToOrderPage(
+                                          menuItem.name,
+                                          menuItem.food,
+                                          menuItem.image,
+                                          harga);
+                                      Get.snackbar(
+                                        'Item Added',
+                                        '${menuItem.name} telah ditambahkan ke Order Page',
+                                        snackPosition: SnackPosition.TOP,
+                                        duration: Duration(seconds: 3),
+                                      );
+                                    }),
+                                    child: Row(
+                                      children: [
+                                        Iconify(Mdi.cart_add, color: secondaryColor,),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          'Add',
+                                          style: TextStyle(color: Colors.white), // Warna teks
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),

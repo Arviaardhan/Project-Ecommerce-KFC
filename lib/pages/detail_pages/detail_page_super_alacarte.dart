@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
@@ -37,66 +38,51 @@ class SuperAlacarte extends StatelessWidget {
                       .toList();
                   final menuItem = alacarteItems[index];
                   final harga = menuItem.price;
-                  return GestureDetector(
-                    onTap: () {
-                      // Navigate to the detail menu page
-                      Get.to(() => DetailMenuPage(menuItem: menuItem));
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      width: 370,
-                      height: 160,
-                      child: Card(
-                        margin: EdgeInsets.only(left: 15, right: 15),
-                        elevation: 4,
-                        shadowColor: Colors.grey,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                  return Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    width: 370,
+                    height: 160,
+                    child: Card(
+                      margin: EdgeInsets.only(left: 15, right: 15),
+                      elevation: 4,
+                      shadowColor: Colors.grey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.only(top: 17,),
+                        leading: Container(
+                          margin: EdgeInsets.only(left: 30, right: 20),
+                          child: Image.network(
+                            menuItem.image,
+                            width: 80,
+                            height: 80,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.only(
-                            top: 17,
-                          ),
-                          leading: Container(
-                            margin: EdgeInsets.only(left: 30, right: 20),
-                            child: Image.network(
-                              menuItem.image,
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              menuItem.name,
+                              style: namePriceMenu,
                             ),
-                          ),
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                menuItem.name,
-                                style: namePriceMenu,
-                              ),
-                              SizedBox(height: 10),
-                              for (var foodItem in menuItem.food)
+                            SizedBox(height: 10),
+                            for (var foodItem in menuItem.food)
+                              Text(foodItem, style: foodMenu,),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
                                 Text(
-                                  foodItem,
-                                  style: foodMenu,
+                                  "Rp. $harga", style: namePriceMenu,
                                 ),
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Rp. $harga",
-                                    style: namePriceMenu,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      left: 40,
-                                    ),
-                                    child: myAddButton(context, "Add",
-                                        Mdi.cart_add, kfcController, index),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 40, ),
+                                  child: ElevatedButton(onPressed: (() {kfcController.addToOrderPage(menuItem.name, menuItem.food, menuItem.image, harga);}), child: Icon(CupertinoIcons.cart_fill_badge_minus)),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),

@@ -18,10 +18,10 @@ class SplashController extends GetxController {
     final username = prefs.getString('username');
 
     Future.delayed(Duration(seconds: 5), () {
-      if (username == null) {
+      if (prefs.getString('username') == null) {
         Get.offNamed("/login");
       } else {
-        Get.off(() => LoginPage());
+        Get.off(HomePage());
       }
     });
   }
