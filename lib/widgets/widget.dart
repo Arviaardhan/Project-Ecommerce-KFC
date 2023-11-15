@@ -194,50 +194,49 @@ Widget myDetailCard(BuildContext context, String title, String desc, String imag
   );
 }
 
-Widget myAddButton(BuildContext context, String label, String icon, KfcController kfcController, int index) {
-  return Container(
-      height: 35,
-      width: 100,
-      child: ElevatedButton(
-          onPressed: () {
-            if (kfcController.kfcOrder.isNotEmpty) {
-              final OrderModel menuItem = kfcController.kfcOrder[index];
-
-              final OrderModel orderModel = OrderModel(
-                name: menuItem.name,
-                food: menuItem.food,
-                image: menuItem.image,
-                price: menuItem.price ?? 0.0,
-                quantity: 1,
-              );
-
-              kfcController.addToOrderPage(orderModel);
-
-              Get.snackbar(
-                'Item Added',
-                'Telah ditambahkan ke Order Page',
-                snackPosition: SnackPosition.TOP,
-                duration: Duration(seconds: 3),
-              );
-
-            } else {
-              print('Error: kfcOrder is empty');
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)
-            )
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Iconify(icon, color: Colors.white, size: 24,),
-              SizedBox(width: 5,),
-              Text(label, style: textIcon,),
-            ],
-          )
-      )
-  );
-}
+// Widget myAddButton(BuildContext context, String label, String icon, KfcController kfcController, int index) {
+//
+//   return Container(
+//       height: 35,
+//       width: 100,
+//       child: ElevatedButton(
+//           onPressed: () {
+//
+//             Get.snackbar (
+//               'Item Added',
+//               'Telah ditambahkan ke Order Page',
+//               snackPosition: SnackPosition.TOP,
+//               duration: Duration(seconds: 3),
+//             );
+//
+//               final OrderModel menuItem = kfcController.kfcOrder[index];
+//
+//               final OrderModel orderModel = OrderModel(
+//                 name: menuItem.name,
+//                 food: menuItem.food,
+//                 image: menuItem.image,
+//                 price: menuItem.price ?? 0.0,
+//                 quantity: 1,
+//               );
+//
+//               kfcController.addToOrderPage(menuItem);
+//           },
+//
+//           style: ElevatedButton.styleFrom(
+//             backgroundColor: primaryColor,
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(20)
+//             )
+//           ),
+//
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Iconify(icon, color: Colors.white, size: 24,),
+//               SizedBox(width: 5,),
+//               Text(label, style: textIcon,),
+//             ],
+//           )
+//       )
+//   );
+// }

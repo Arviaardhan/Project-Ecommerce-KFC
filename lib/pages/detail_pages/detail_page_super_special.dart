@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
@@ -77,7 +78,7 @@ class SuperSpecial extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 40, ),
-                                  child: myAddButton(context, "Add", Mdi.cart_add, kfcController, index),
+                                  child: ElevatedButton(onPressed: (() {kfcController.addToOrderPage(menuItem.name, menuItem.food, menuItem.image, harga);}), child: Icon(CupertinoIcons.cart_fill_badge_minus)),
                                 )
                               ],
                             ),

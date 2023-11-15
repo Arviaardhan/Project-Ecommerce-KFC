@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
@@ -30,6 +31,7 @@ class SuperCombo extends StatelessWidget {
                     .where((item) => item.category == Category.COMBO)
                     .length,
                 itemBuilder: (BuildContext context, int index) {
+                  print("data ${kfcController.kfcresponsemodel.length}");
                   final kfc = kfcController.kfcresponsemodel[0];
                   final comboItems = kfc.menu
                       .where((item) => item.category == Category.COMBO)
@@ -48,7 +50,9 @@ class SuperCombo extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
-                        contentPadding: EdgeInsets.only(top: 17,),
+                        contentPadding: EdgeInsets.only(
+                          top: 17,
+                        ),
                         leading: Container(
                           margin: EdgeInsets.only(left: 30, right: 20),
                           child: Image.network(
@@ -67,16 +71,52 @@ class SuperCombo extends StatelessWidget {
                             ),
                             SizedBox(height: 10),
                             for (var foodItem in menuItem.food)
-                              Text(foodItem, style: foodMenu,),
+                              Text(
+                                foodItem,
+                                style: foodMenu,
+                              ),
                             SizedBox(height: 10),
                             Row(
                               children: [
                                 Text(
-                                  "Rp. $harga", style: namePriceMenu,
+                                  "Rp. $harga",
+                                  style: namePriceMenu,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 40, ),
-                                  child: myAddButton(context, "Add", Mdi.cart_add, kfcController, index),
+                                  padding: EdgeInsets.only(
+                                    left: 40,
+                                  ),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20)
+                                      )
+                                    ),
+                                    onPressed: (() {
+                                      kfcController.addToOrderPage(
+                                          menuItem.name,
+                                          menuItem.food,
+                                          menuItem.image,
+                                          harga);
+                                      Get.snackbar(
+                                        'Item Added',
+                                        '${menuItem.name} telah ditambahkan ke Order Page',
+                                        snackPosition: SnackPosition.TOP,
+                                        duration: Duration(seconds: 3),
+                                      );
+                                    }),
+                                    child: Row(
+                                      children: [
+                                        Iconify(Mdi.cart_add, color: secondaryColor,),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          'Add',
+                                          style: TextStyle(color: Colors.white), // Warna teks
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 )
                               ],
                             ),

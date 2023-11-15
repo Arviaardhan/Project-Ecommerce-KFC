@@ -16,14 +16,6 @@ class OrderPage extends StatelessWidget {
 
   final kfcController = Get.put(KfcController());
 
-  double calculateTotalPrice() {
-    double total = 0;
-    for (var orderItem in kfcController.kfcOrder) {
-      total += (orderItem.price ?? 0) * orderItem.quantity;
-    }
-    return total;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,39 +31,50 @@ class OrderPage extends StatelessWidget {
                   itemCount: kfcController.kfcOrder.length,
                   itemBuilder: (BuildContext context, int index) {
                     final orderItem = kfcController.kfcOrder[index];
-                    return ListTile(
-                      title: Text(orderItem.name),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          for (var foodItem in orderItem.food) Text(foodItem),
-                          Row(
-                            children: [
-                              IconButton(
-                                icon: Icon(Icons.remove),
-                                onPressed: () {
-                                  kfcController.updateTotalPrice(orderItem, orderItem.quantity - 1);
-                                },
-                              ),
-                              Text(orderItem.quantity.toString()), // Display quantity
-                              IconButton(
-                                icon: Icon(Icons.add),
-                                onPressed: () {
-                                  kfcController.updateTotalPrice(orderItem, orderItem.quantity + 1);
-                                },
-                              ),
-                            ],
-                          ),
-                          Text("Rp.${(orderItem.price ?? 0) * orderItem.quantity}"), // Updated price based on quantity
-                        ],
+                    return Card(
+                      elevation: 3,
+                      margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: ListTile(
+                        title: Text(orderItem.name),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            for (var foodItem in orderItem.food) Text(foodItem),
+                            Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.remove),
+                                  onPressed: () {
+                                    kfcController.updateTotalPrice(orderItem, orderItem.quantity - 1);
+                                  },
+                                ),
+                                Text(orderItem.quantity.toString()), // Display quantity
+                                IconButton(
+                                  icon: Icon(Icons.add),
+                                  onPressed: () {
+                                    kfcController.updateTotalPrice(orderItem, orderItem.quantity + 1);
+                                  },
+                                ),
+                              ],
+                            ),
+                            Text("Rp.${(orderItem.price ?? 0) * orderItem.quantity}"), // Updated price based on quantity
+                          ],
+                        ),
+                        leading: Image.network(orderItem.image),
                       ),
-                      leading: Image.network(orderItem.image),
                     );
                   },
                 ),
               ),
             ),
-            Text("Total: Rp.${calculateTotalPrice()}"),
+            Obx(() {
+              double total = 0;
+              for (var orderItem in kfcController.kfcOrder) {
+                total += (orderItem.price ?? 0) * orderItem.quantity;
+              }
+              return  Text("Total: Rp.${total}");
+            })
           ],
         ),
       ),

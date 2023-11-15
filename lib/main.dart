@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: AppPages.pages,
-      home: HomePage(),
+      home: SplashScreen(),
       // FullMenu(),
     );
   }
