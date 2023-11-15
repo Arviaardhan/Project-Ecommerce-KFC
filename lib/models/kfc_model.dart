@@ -35,6 +35,8 @@ class Menu {
   String image;
   List<String> food;
 
+  var description;
+
   Menu({
     required this.id,
     required this.name,
