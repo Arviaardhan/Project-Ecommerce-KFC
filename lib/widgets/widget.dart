@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -189,6 +190,20 @@ Widget myDetailCard(BuildContext context, String title, String desc, String imag
             ],
           ),
         ],
+      ),
+    ),
+  );
+}
+
+Widget buildDragIcon() {
+  return Padding(
+    padding: EdgeInsets.only(top: 10, left: 180),
+    child: Container(
+      width: 80,
+      height: 5,
+      decoration: BoxDecoration(
+        color: primaryColor,
+        borderRadius: BorderRadius.circular(5),
       ),
     ),
   );
