@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:project_ecommerce/pages/detail_pages/detail_menu.dart';
 import 'package:project_ecommerce/pages/order_page.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
 import 'package:project_ecommerce/helper/themes.dart';

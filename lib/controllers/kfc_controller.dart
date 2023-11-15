@@ -10,6 +10,8 @@ class KfcController extends GetxController{
   RxList<KfcResponseModel> kfcresponsemodel = <KfcResponseModel>[].obs;
   RxList<OrderModel> kfcOrder = <OrderModel>[].obs;
 
+  var kfcResponseModel;
+
   @override
   void onInit() {
     // TODO: implement onInit

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:project_ecommerce/pages/detail_pages/detail_menu.dart';
 import 'package:project_ecommerce/pages/order_page.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
 import 'package:project_ecommerce/helper/themes.dart';
@@ -33,10 +34,10 @@ class SuperSpecial extends StatelessWidget {
                     .length,
                 itemBuilder: (BuildContext context, int index) {
                   final kfc = kfcController.kfcresponsemodel[0];
-                  final comboItems = kfc.menu
+                  final specialItems = kfc.menu
                       .where((item) => item.category == Category.SPECIAL)
                       .toList();
-                  final menuItem = comboItems[index];
+                  final menuItem = specialItems[index];
                   final harga = menuItem.price;
                   return Container(
                     margin: EdgeInsets.only(top: 10, bottom: 10),

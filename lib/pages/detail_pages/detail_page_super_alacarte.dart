@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:project_ecommerce/pages/detail_pages/detail_menu.dart';
 import 'package:project_ecommerce/pages/home_page.dart';
 import 'package:project_ecommerce/pages/order_page.dart';
 import 'package:project_ecommerce/pages/profile_page.dart';
@@ -11,6 +12,7 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:project_ecommerce/controllers/kfc_controller.dart';
 import 'package:get/get.dart';
 import 'package:project_ecommerce/models/kfc_model.dart';
+
 
 class SuperAlacarte extends StatelessWidget {
   SuperAlacarte({Key? key}) : super(key: key);
@@ -31,10 +33,10 @@ class SuperAlacarte extends StatelessWidget {
                     .length,
                 itemBuilder: (BuildContext context, int index) {
                   final kfc = kfcController.kfcresponsemodel[0];
-                  final comboItems = kfc.menu
+                  final alacarteItems = kfc.menu
                       .where((item) => item.category == Category.ALACARTE)
                       .toList();
-                  final menuItem = comboItems[index];
+                  final menuItem = alacarteItems[index];
                   final harga = menuItem.price;
                   return Container(
                     margin: EdgeInsets.only(top: 10, bottom: 10),
