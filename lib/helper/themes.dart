@@ -125,6 +125,12 @@ TextStyle taxText = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.regular,
         fontSize: figmaFontsize(25)));
 
+TextStyle navbarText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: iconColor,
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(18)));
+
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";
 String logoUser = "assets/user.png";

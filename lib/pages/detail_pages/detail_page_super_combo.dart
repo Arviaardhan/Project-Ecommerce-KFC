@@ -100,12 +100,12 @@ class SuperCombo extends StatelessWidget {
                                           menuItem.food,
                                           menuItem.image,
                                           harga);
-                                      Get.snackbar(
-                                        'Item Added',
-                                        '${menuItem.name} telah ditambahkan ke Order Page',
-                                        snackPosition: SnackPosition.TOP,
-                                        duration: Duration(seconds: 3),
-                                      );
+                                      // Get.snackbar(
+                                      //   'Item Added',
+                                      //   '${menuItem.name} telah ditambahkan ke Order Page',
+                                      //   snackPosition: SnackPosition.TOP,
+                                      //   duration: Duration(seconds: 3),
+                                      // );
                                     }),
                                     child: Row(
                                       children: [

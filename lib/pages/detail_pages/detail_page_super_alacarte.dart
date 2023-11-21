@@ -74,11 +74,44 @@ class SuperAlacarte extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  "Rp. $harga", style: namePriceMenu,
+                                  "Rp. $harga",
+                                  style: namePriceMenu,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 40, ),
-                                  child: ElevatedButton(onPressed: (() {kfcController.addToOrderPage(menuItem.name, menuItem.food, menuItem.image, harga);}), child: Icon(CupertinoIcons.cart_fill_badge_minus)),
+                                  padding: EdgeInsets.only(
+                                    left: 40,
+                                  ),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(20)
+                                        )
+                                    ),
+                                    onPressed: (() {
+                                      kfcController.addToOrderPage(
+                                          menuItem.name,
+                                          menuItem.food,
+                                          menuItem.image,
+                                          harga);
+                                      // Get.snackbar(
+                                      //   'Item Added',
+                                      //   '${menuItem.name} telah ditambahkan ke Order Page',
+                                      //   snackPosition: SnackPosition.TOP,
+                                      //   duration: Duration(seconds: 3),
+                                      // );
+                                    }),
+                                    child: Row(
+                                      children: [
+                                        Iconify(Mdi.cart_add, color: secondaryColor,),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          'Add',
+                                          style: TextStyle(color: Colors.white), // Warna teks
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 )
                               ],
                             ),
