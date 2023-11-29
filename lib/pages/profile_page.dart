@@ -6,6 +6,7 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:project_ecommerce/controllers/profile_controller.dart';
 import 'package:get/get.dart';
+import 'package:project_ecommerce/pages/splash_screen.dart';
 import 'package:project_ecommerce/pages/voucher_page.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
 
@@ -24,6 +25,7 @@ class ProfilePage extends StatelessWidget {
           children: [
             Obx(() => Text('user logged ' + profileController.strName.value)),
             Image(image: AssetImage(logoUser), width: 100, height: 100,),
+            ElevatedButton(onPressed: (() => SplashScreen()), child: Text("Log Out"))
           ],
         ),
       ),

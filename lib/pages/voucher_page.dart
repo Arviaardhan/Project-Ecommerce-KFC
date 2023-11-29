@@ -4,6 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:iconify_flutter/icons/mingcute.dart';
+import 'package:iconify_flutter/icons/ri.dart';
 import 'package:project_ecommerce/pages/profile_page.dart';
 import 'package:project_ecommerce/controllers/voucher_controller.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +15,7 @@ import 'home_page.dart';
 import 'order_page.dart';
 
 class VoucherPage extends StatelessWidget {
-  final VoucherController _voucherController = Get.put(VoucherController());
+  final VoucherController voucherController = Get.put(VoucherController());
 
   @override
   Widget build(BuildContext context) {
@@ -79,91 +81,57 @@ class VoucherPage extends StatelessWidget {
                 ],
               ),
             ),
-            Obx(() => _voucherController.vouchers.isEmpty
+            Obx(() => voucherController.isLoading.value
                   ? Center(child: CircularProgressIndicator())
-                  : Expanded(child: ListView.builder(
-                  itemCount: _voucherController.vouchers.length,
-                  itemBuilder: (context, index) {
-                    final voucher = _voucherController.vouchers[index];
+                  : Expanded(child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                  itemCount: voucherController.voucherresponsemodel.first.menu.length,
+                  itemBuilder: (BuildContext context, index) {
+                    final voucher = voucherController.voucherresponsemodel.first.menu[index];
                     return Center(
                       child: Container(
-                        margin: EdgeInsets.only(top: 10, bottom: 20),
-                        width: screenWidth * 0.9,
-                        height: screenHeight * 0.2,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x3F000000),
-                              blurRadius: 8,
-                              offset: Offset(4, 4),
-                              spreadRadius: 0,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 25),
-                              child: Container(
+                        width: 190,
+                        child: Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          margin: EdgeInsets.only(top: 25),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
                                 width: 180,
-                                height: 161,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(voucher.image),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    bottomLeft: Radius.circular(20),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            Container(
-                              width: 160,
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 10, top: 15),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      voucher.name,
-                                      style: TextStyle(
-                                        color: Color(0xFF252525),
-                                        fontSize: 22,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.5,
+                                height: 120,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 5),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Image.network(
+                                          voucher.image
                                       ),
                                     ),
-                                    SizedBox(height: 8),
-                                    Row(
-                                      children: [
-                                        Iconify(Mdi.clock,
-                                            color: Color(0xFFE7002B),
-                                            size: 15),
-                                        SizedBox(width: 4),
-                                        Text(
-                                          voucher.limit,
-                                          style: TextStyle(
-                                            color: Color(0xFF4D4C4C),
-                                            fontSize: 10,
-                                            fontFamily: 'Poppins',
-                                            fontWeight: FontWeight.w600,
-                                            height: 0.30,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: EdgeInsets.only(right: 8, left: 10, top: 7),
+                                child: Text(voucher.name, style: menuText,),
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 110,),
+                                    child: Iconify(Mdi.voucher_outline, color: primaryColor,),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10,),
+                                    child: Text(voucher.discount, style: anotherText,),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );
