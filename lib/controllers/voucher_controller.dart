@@ -1,30 +1,34 @@
 import 'package:get/get.dart';
-import 'package:project_ecommerce/models/voucher_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../models/voucher_model.dart';
+
 
 class VoucherController extends GetxController {
-  RxList<Voucher> vouchers = <Voucher>[].obs;
+  RxList<VoucherResponseModel> voucherresponsemodel = <VoucherResponseModel>[].obs;
+  RxList<Menu> vouchers = <Menu>[].obs;
+  var isLoading = true.obs;
 
   @override
   void onInit() {
-    fetchData();
+    fetchProduct();
     super.onInit();
   }
 
-  Future<void> fetchData() async {
+  void fetchProduct() async {
     try {
       final response = await http.get(Uri.parse('https://api-voucher.barathawijayaxp.repl.co/api/menu'));
-
       if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body)['menu'];
-        vouchers.assignAll(data.map((voucher) => Voucher.fromJson(voucher)).toList());
+        final voucherResponseModel = voucherResponseModelFromJson(response.body);
+        voucherresponsemodel.assignAll([voucherResponseModel]);
+        isLoading(false);
       } else {
-        throw Exception('Failed to load data');
+        print('Error: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      print(e);
     }
   }
+
 }
