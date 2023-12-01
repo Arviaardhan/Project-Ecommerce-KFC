@@ -91,26 +91,26 @@ TextStyle menuText = GoogleFonts.poppins(
 TextStyle buttonText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: secondaryColor,
-        fontWeight: FontWeight.w600,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(20)));
 
 TextStyle namePriceMenu = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: headerTextColor,
-        fontWeight: FontWeight.w600,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(23)));
 
 TextStyle foodMenu = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: foodMenuColor,
-        fontWeight: FontWeight.w400,
+        fontWeight: AppThemesWeight.regular,
         height: 1.5,
         fontSize: figmaFontsize(14)));
 
 TextStyle textIcon = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: secondaryColor,
-        fontWeight: FontWeight.w600,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(14)));
 
 TextStyle orderSummary = GoogleFonts.poppins(
@@ -133,7 +133,7 @@ TextStyle navbarText = GoogleFonts.poppins(
 
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";
-String logoUser = "assets/user.png";
+String imageUser = "assets/avatar_placeholder.png";
 String imageHomepage = "assets/homepage-image.png";
 String delivery = "assets/delivery.jpeg";
 String takeAway = "assets/take-away.png";
