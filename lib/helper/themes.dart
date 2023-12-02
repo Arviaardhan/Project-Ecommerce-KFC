@@ -52,6 +52,12 @@ TextStyle headerText2 = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(25)));
 
+TextStyle headerText3 = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: primaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(22)));
+
 TextStyle recommendedText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: primaryColor,
@@ -127,9 +133,15 @@ TextStyle taxText = GoogleFonts.poppins(
 
 TextStyle navbarText = GoogleFonts.poppins(
     textStyle: TextStyle(
-        color: iconColor,
+        color: primaryColor,
         fontWeight: AppThemesWeight.medium,
         fontSize: figmaFontsize(18)));
+
+TextStyle btnBuyText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: secondaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(25)));
 
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";

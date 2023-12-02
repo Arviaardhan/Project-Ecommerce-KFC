@@ -27,6 +27,7 @@ class SuperSpecial extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.only(bottom: 100),
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
                 itemCount: kfcController.kfcresponsemodel[0].menu
