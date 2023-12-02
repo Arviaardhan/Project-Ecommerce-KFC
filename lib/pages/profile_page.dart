@@ -23,6 +23,7 @@ class ProfilePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+            myHeaderPage("Profile"),
             Obx(() => Text('user logged ' + profileController.strName.value)),
             Image(image: AssetImage(logoUser), width: 100, height: 100,),
             ElevatedButton(onPressed: (() => SplashScreen()), child: Text("Log Out"))
