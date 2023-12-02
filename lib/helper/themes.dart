@@ -145,7 +145,7 @@ TextStyle btnBuyText = GoogleFonts.poppins(
 
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";
-String logoUser = "assets/user.png";
+String imageUser = "assets/avatar_placeholder.png";
 String imageHomepage = "assets/homepage-image.png";
 String delivery = "assets/delivery.jpeg";
 String takeAway = "assets/take-away.png";
