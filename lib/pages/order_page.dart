@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/heroicons.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
+import 'package:project_ecommerce/controllers/button_buy_controller.dart';
 import 'package:project_ecommerce/pages/home_page.dart';
 import 'package:project_ecommerce/pages/profile_page.dart';
 import 'package:project_ecommerce/pages/voucher_page.dart';
@@ -18,6 +19,7 @@ class OrderPage extends StatelessWidget {
   OrderPage({Key? key}) : super(key: key);
 
   final kfcController = Get.put(KfcController());
+  final buttonBuyController = Get.put(ButtonBuyController());
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,8 @@ class OrderPage extends StatelessWidget {
         header: buildDragIcon(),
         maxHeight: MediaQuery.of(context).size.height - 500,
         minHeight: 50,
-        panelBuilder: (scrollController) => buildSlidingPanel(scrollController),
-        body: buildMainContent(),
+        panelBuilder: (scrollController) => buildSlidingPanel(scrollController, context),
+        body: buildMainContent(context),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
@@ -76,7 +78,7 @@ class OrderPage extends StatelessWidget {
     );
   }
 
-  Widget buildSlidingPanel(ScrollController scrollController) {
+  Widget buildSlidingPanel(ScrollController scrollController, BuildContext context) {
     return SingleChildScrollView(
       controller: scrollController,
       child: Container(
@@ -91,7 +93,23 @@ class OrderPage extends StatelessWidget {
               for (var orderItem in kfcController.kfcOrder) {
                 total += (orderItem.price ?? 0) * orderItem.quantity;
               }
-              return Text("Tax Base Pay          Rp ${total}", style: taxText,);
+              double taxAmount = total * 0.1;
+              double totalAfterTax = total - taxAmount;
+              return Column(
+                children: [
+                  Text("Tax Base Pay:          Rp ${total}", style: taxText,),
+                  Text("Service Tax (10%):    -Rp ${taxAmount.toStringAsFixed(2)}", style: taxText,),
+                  Text("Total after Tax:       Rp ${totalAfterTax.toStringAsFixed(2)}", style: taxText,),
+                  Padding(
+                    padding: EdgeInsets.only(top: 30),
+                    child: ElevatedButton(onPressed: () {buttonBuyController.showPaymentConfirmation(context);}, child: Text("Buy Now", style: btnBuyText,), style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                      padding: EdgeInsets.only(right: 70, left: 70, top: 5, bottom: 5)
+                    ),),
+                  )
+                ],
+              );
             }),
           ],
         ),
@@ -99,15 +117,16 @@ class OrderPage extends StatelessWidget {
     );
   }
 
-  Widget buildMainContent() {
+  Widget buildMainContent(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Your Order", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        SizedBox(height: 20),
+        myHeaderPage("Order Review"),
+        SizedBox(height: 10),
         Expanded(
           child: Obx(
                 () => ListView.builder(
+                  padding: EdgeInsets.only(bottom: 130),
               itemCount: kfcController.kfcOrder.length,
               itemBuilder: (BuildContext context, int index) {
                 final orderItem = kfcController.kfcOrder[index];

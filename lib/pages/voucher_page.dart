@@ -11,6 +11,7 @@ import 'package:project_ecommerce/controllers/voucher_controller.dart';
 import 'package:http/http.dart' as http;
 
 import '../helper/themes.dart';
+import '../widgets/widget.dart';
 import 'home_page.dart';
 import 'order_page.dart';
 
@@ -26,61 +27,7 @@ class VoucherPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Container(
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.fromBorderSide(BorderSide(
-                  color: Colors.black.withOpacity(0.1),
-                  width: 1,
-                )),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x3F000000),
-                    blurRadius: 4,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  Transform.rotate(
-                    angle: -1.57,
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: 1.25,
-                            top: 1.25,
-                            child: Container(
-                              width: 27.50,
-                              height: 27.50,
-
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      'List Voucher',
-                      style: TextStyle(
-                        color: Color(0xFFE7002B),
-                        fontSize: 24,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        height: 0.03,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            myHeaderPage("List Voucher"),
             Obx(() => voucherController.isLoading.value
                   ? Center(child: CircularProgressIndicator())
                   : Expanded(child: GridView.builder(

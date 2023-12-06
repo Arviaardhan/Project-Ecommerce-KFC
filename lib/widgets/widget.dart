@@ -195,6 +195,39 @@ Widget myDetailCard(BuildContext context, String title, String desc, String imag
   );
 }
 
+Widget myHeaderPage(String title) {
+
+  return Container(
+    width: 450 ,
+    height: 50,
+    child: Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.black.withOpacity(0.1),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x3F000000),
+                blurRadius: 4,
+                offset: Offset(0, 1),
+                spreadRadius: 0,
+              )
+            ],
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            title,
+            style: headerText3
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget buildDragIcon() {
   return Padding(
     padding: EdgeInsets.only(top: 10, left: 180),
