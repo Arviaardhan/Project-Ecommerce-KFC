@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:project_ecommerce/pages/home_page.dart';
 
 import '../../helper/themes.dart';
@@ -43,22 +45,12 @@ class _AnimatedPaymentSuccessState extends State<AnimatedPaymentSuccess> {
         SizedBox(height: 20),
         Text('Payment Successful!'),
         SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(onPressed: (() => HomePage()), child: Text("View Struk"), style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-                padding: EdgeInsets.only(right: 30, left: 30, top: 5, bottom: 5)
-            ),),
-            Padding(padding: EdgeInsets.only(right: 10)),
-            ElevatedButton(onPressed: (() => HomePage()), child: Text("Go Back"), style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
-                padding: EdgeInsets.only(right: 30, left: 30, top: 5, bottom: 5)
-            ),),
-          ],
-        )
+        Padding(padding: EdgeInsets.only(right: 10)),
+        ElevatedButton(onPressed: () {Get.to(() => HomePage());}, child: Text("Go Back"), style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+            padding: EdgeInsets.only(right: 30, left: 30, top: 5, bottom: 5)
+        ),)
       ],
     );
   }

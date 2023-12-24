@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/home_page.dart';
-import 'package:project_ecommerce/pages/login_page.dart';
+import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
@@ -16,12 +15,11 @@ class SplashController extends GetxController {
   void checkSharedPreference() async {
     prefs = await SharedPreferences.getInstance();
     final username = prefs.getString('username');
-
-    Future.delayed(Duration(seconds: 5), () {
-      if (prefs.getString('username') == null) {
-        Get.offNamed("/login");
+    Future.delayed(Duration(seconds: 3), () async {
+      if (username == null) {
+        Get.offNamed(RouteName.login);
       } else {
-        Get.off(HomePage());
+        Get.offNamed(RouteName.home);
       }
     });
   }

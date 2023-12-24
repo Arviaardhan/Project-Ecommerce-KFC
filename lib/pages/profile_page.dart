@@ -6,10 +6,9 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:project_ecommerce/controllers/profile_controller.dart';
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/splash_screen.dart';
 import 'package:project_ecommerce/pages/voucher_page.dart';
+import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
-
 import 'home_page.dart';
 import 'order_page.dart';
 
@@ -22,19 +21,17 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             myHeaderPage("Profile"),
-            Obx(() => Text('user logged ' + profileController.strName.value)),
-            Image(image: AssetImage(logoUser), width: 100, height: 100,),
-            ElevatedButton(onPressed: (() => SplashScreen()), child: Text("Log Out")),
+            Padding(padding: EdgeInsets.only(top: 30)),
             CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage(imageUser),
             ),
             SizedBox(height: 20),
             Obx(() => Text(
-                  'Hello, ${profileController.userProfile.value.fullName}!',
+                  'Hello, ${profileController.userProfile.value.username}!',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )),
             SizedBox(height: 10),
@@ -78,7 +75,7 @@ class ProfilePage extends StatelessWidget {
                     Icon(Icons.email, color: primaryColor),
                     SizedBox(width: 10),
                     Obx(() => Text(
-                          ' ${profileController.userProfile.value.email}',
+                          ' ${profileController.userProfile.value.password}',
                           style: TextStyle(fontSize: 16),
                         )),
                   ],
@@ -88,10 +85,10 @@ class ProfilePage extends StatelessWidget {
             SizedBox(height: 30),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFD41313), // Set button color
+                backgroundColor: primaryColor, // Set button color
               ),
               onPressed: () {
-                Get.to(() => SplashScreen());
+                profileController.logout();
               },
               child: Text("Log Out"),
             )
@@ -101,7 +98,12 @@ class ProfilePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Iconify(Heroicons.home_solid, color: primaryColor),
+            icon: IconButton(
+              onPressed: () {
+                Get.to(() => HomePage());
+              },
+              icon: Iconify(Heroicons.home_solid, color: primaryColor),
+            ),
             label: "Home",
           ),
           BottomNavigationBarItem(

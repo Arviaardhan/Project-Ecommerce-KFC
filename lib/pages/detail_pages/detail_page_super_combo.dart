@@ -41,13 +41,13 @@ class SuperCombo extends StatelessWidget {
                   final menuItem = comboItems[index];
                   final harga = menuItem.price;
                   return Container(
+                    color: Colors.white,
                     margin: EdgeInsets.only(top: 10, bottom: 10),
                     width: 370,
                     height: 200,
                     child: Card(
                       margin: EdgeInsets.only(left: 15, right: 15),
                       elevation: 4,
-                      shadowColor: Colors.grey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project_ecommerce/models/profile_model.dart';
 
@@ -8,6 +9,7 @@ class ProfileController extends GetxController {
     username: "No Data",
     fullName: "No Data",
     email: "No Data",
+    password: "No Data",
   ).obs;
 
   @override
@@ -22,6 +24,13 @@ class ProfileController extends GetxController {
       username: prefs.getString('username') ?? "No Data",
       fullName: prefs.getString('fullName') ?? "No Data",
       email: prefs.getString('email') ?? "No Data",
+      password: prefs.getString('password') ?? "No Data",
     );
+  }
+
+  void logout() {
+    prefs.clear();
+    print(prefs);
+    Get.offAllNamed(RouteName.login);
   }
 }
