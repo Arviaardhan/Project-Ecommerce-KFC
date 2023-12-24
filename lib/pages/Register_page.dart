@@ -125,6 +125,26 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
+                InkWell(
+                  mouseCursor: SystemMouseCursors.click,
+                  onTap: () {
+                    Get.toNamed("/login");
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Do you have an account?',
+                        style: anotherText,
+                      ),
+                      SizedBox(width: 12),
+                      Text('Login here', style: linkText),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 ElevatedButton(
                   onPressed: () {
                     registerController.Register();

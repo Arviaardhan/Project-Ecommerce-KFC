@@ -102,12 +102,24 @@ class OrderPage extends StatelessWidget {
                   Text("Total after Tax:       Rp ${totalAfterTax.toStringAsFixed(2)}", style: taxText,),
                   Padding(
                     padding: EdgeInsets.only(top: 30),
-                    child: ElevatedButton(onPressed: () {buttonBuyController.showPaymentConfirmation(context);}, child: Text("Buy Now", style: btnBuyText,), style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                      padding: EdgeInsets.only(right: 70, left: 70, top: 5, bottom: 5)
-                    ),),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        kfcController.kfcOrder.clear();
+                        kfcController.kfcOrder.assignAll([]);
+
+                        Get.off(() => OrderPage());
+
+                        buttonBuyController.showPaymentConfirmation(context);
+                      },
+                      child: Text("Buy Now", style: btnBuyText,),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryColor,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                          padding: EdgeInsets.only(right: 70, left: 70, top: 5, bottom: 5)
+                      ),
+                    ),
                   )
+
                 ],
               );
             }),
