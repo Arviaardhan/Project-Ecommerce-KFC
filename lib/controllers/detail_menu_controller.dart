@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:project_ecommerce/models/detail_menu_model.dart';
+
+import '../models/detail_model.dart';
 
 
-class KfcController extends GetxController {
+class DetailMenuController extends GetxController {
   var kfcList = <MenuKFC>[].obs;
+  RxList<MenuKFC> menuKfc = <MenuKFC>[].obs;
   var isLoading = true.obs;
 
   @override
@@ -24,5 +26,10 @@ class KfcController extends GetxController {
     } finally {
       isLoading(false);
     }
+  }
+
+  void addToOrderPage(int id, String name, List<String> food, String image, double price) {
+    menuKfc.add(MenuKFC(id:id, name: name, food: food, image: image, price: price));
+    menuKfc.refresh();
   }
 }
