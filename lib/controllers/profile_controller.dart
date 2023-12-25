@@ -11,6 +11,7 @@ class ProfileController extends GetxController {
     email: "No Data",
     password: "No Data",
   ).obs;
+  RxInt selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -32,5 +33,9 @@ class ProfileController extends GetxController {
     prefs.clear();
     print(prefs);
     Get.offAllNamed(RouteName.login);
+  }
+
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
   }
 }

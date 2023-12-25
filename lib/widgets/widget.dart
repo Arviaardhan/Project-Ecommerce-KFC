@@ -46,7 +46,7 @@ Widget myMenu(BuildContext context, String label, String image, Widget page) {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: Colors.grey.withOpacity(0.3),
               blurRadius: 7,
               offset: Offset(0, 4),
             ),
@@ -55,6 +55,7 @@ Widget myMenu(BuildContext context, String label, String image, Widget page) {
         width: screenWidth * 0.30,
         margin: EdgeInsets.only(bottom: 10, right: 5, left: 5),
         child: Card(
+          surfaceTintColor:Colors.white,
           color: Colors.white,
           child: Column(
             children: <Widget>[
@@ -107,6 +108,7 @@ Widget myRecommended(BuildContext context, String title, String subTitle, String
       width: screenWidth * 0.65,
       height: screenHeight * 0.39,
       child: Card(
+        surfaceTintColor:Colors.white,
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

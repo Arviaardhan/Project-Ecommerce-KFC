@@ -7,6 +7,7 @@ class HomeController extends GetxController {
   late final SharedPreferences prefs;
   RxString strName = "".obs;
   var activeIndex = 0.obs;
+  RxInt selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -23,5 +24,9 @@ class HomeController extends GetxController {
 
   void updatePageIndicator(int index) {
     activeIndex.value = index;
+  }
+
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
   }
 }

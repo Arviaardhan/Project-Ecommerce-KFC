@@ -11,6 +11,7 @@ import 'package:project_ecommerce/controllers/voucher_controller.dart';
 import 'package:http/http.dart' as http;
 
 import '../helper/themes.dart';
+import '../widgets/navbar.dart';
 import '../widgets/widget.dart';
 import 'home_page.dart';
 import 'order_page.dart';
@@ -37,26 +38,23 @@ class VoucherPage extends StatelessWidget {
                     final voucher = voucherController.voucherresponsemodel.first.menu[index];
                     return Center(
                       child: Container(
-                        width: 190,
+                        width: 200,
                         child: Card(
+                          surfaceTintColor:Colors.white,
                           elevation: 4,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                          margin: EdgeInsets.only(top: 25),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
                                 width: 180,
                                 height: 120,
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 5),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(5),
-                                    child: FittedBox(
-                                      fit: BoxFit.fill,
-                                      child: Image.network(
-                                          voucher.image
-                                      ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Image.network(
+                                        voucher.image
                                     ),
                                   ),
                                 ),
@@ -89,50 +87,7 @@ class VoucherPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => HomePage());
-              },
-              icon: Iconify(Heroicons.home_solid, color: primaryColor),
-            ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.only(right: 30),
-              child: IconButton(
-                onPressed: () {
-                  Get.to(() => OrderPage());
-                },
-                icon: Iconify(Mdi.cart_outline, color: primaryColor),
-              ),
-            ),
-            label: "My Order",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => VoucherPage());
-              },
-              icon: Iconify(Mdi.voucher_outline, color: primaryColor),
-            ),
-            label: "Voucher",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => ProfilePage());
-              },
-              icon: Iconify(Mdi.user_circle_outline, color: primaryColor),
-            ),
-            label: "Profile",
-          ),
-        ],
-        showSelectedLabels: false,
-      ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

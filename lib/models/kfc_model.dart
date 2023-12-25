@@ -2,7 +2,6 @@
 //
 //     final kfcResponseModel = kfcResponseModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 KfcResponseModel kfcResponseModelFromJson(String str) => KfcResponseModel.fromJson(json.decode(str));

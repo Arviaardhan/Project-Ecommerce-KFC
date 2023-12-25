@@ -2,16 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
-import 'package:project_ecommerce/pages/detail_pages/detail_menu.dart';
-import 'package:project_ecommerce/pages/home_page.dart';
-import 'package:project_ecommerce/pages/order_page.dart';
-import 'package:project_ecommerce/pages/profile_page.dart';
-import 'package:project_ecommerce/pages/voucher_page.dart';
-import 'package:project_ecommerce/widgets/widget.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:project_ecommerce/controllers/kfc_controller.dart';
 import 'package:get/get.dart';
 import 'package:project_ecommerce/models/kfc_model.dart';
+
+import '../../widgets/navbar.dart';
 
 
 class SuperAlacarte extends StatelessWidget {
@@ -40,18 +36,20 @@ class SuperAlacarte extends StatelessWidget {
                   final menuItem = alacarteItems[index];
                   final harga = menuItem.price;
                   return Container(
+                    color: Colors.white,
                     margin: EdgeInsets.only(top: 10, bottom: 10),
                     width: 370,
                     height: 160,
                     child: Card(
+                      surfaceTintColor:Colors.white,
+                      color: Colors.white,
                       margin: EdgeInsets.only(left: 15, right: 15),
                       elevation: 4,
-                      shadowColor: Colors.grey,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
-                        contentPadding: EdgeInsets.only(top: 17,),
+                        contentPadding: EdgeInsets.only(top: 5,),
                         leading: Container(
                           margin: EdgeInsets.only(left: 30, right: 20),
                           child: Image.network(
@@ -75,7 +73,7 @@ class SuperAlacarte extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  "Rp. $harga",
+                                  "Rp $harga",
                                   style: namePriceMenu,
                                 ),
                                 Padding(
@@ -95,12 +93,6 @@ class SuperAlacarte extends StatelessWidget {
                                           menuItem.food,
                                           menuItem.image,
                                           harga);
-                                      // Get.snackbar(
-                                      //   'Item Added',
-                                      //   '${menuItem.name} telah ditambahkan ke Order Page',
-                                      //   snackPosition: SnackPosition.TOP,
-                                      //   duration: Duration(seconds: 3),
-                                      // );
                                     }),
                                     child: Row(
                                       children: [
@@ -108,7 +100,7 @@ class SuperAlacarte extends StatelessWidget {
                                         SizedBox(width: 5),
                                         Text(
                                           'Add',
-                                          style: TextStyle(color: Colors.white), // Warna teks
+                                          style: TextStyle(color: Colors.white),
                                         ),
                                       ],
                                     ),
@@ -127,50 +119,7 @@ class SuperAlacarte extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => HomePage());
-              },
-              icon: Iconify(Mdi.home, color: primaryColor),
-            ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.only(right: 30),
-              child: IconButton(
-                onPressed: () {
-                  Get.to(() => OrderPage());
-                },
-                icon: Iconify(Mdi.cart_outline, color: primaryColor),
-              ),
-            ),
-            label: "My Order",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => VoucherPage());
-              },
-              icon: Iconify(Mdi.voucher_outline, color: primaryColor),
-            ),
-            label: "Voucher",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => ProfilePage());
-              },
-              icon: Iconify(Mdi.user_circle_outline, color: primaryColor),
-            ),
-            label: "Profile",
-          ),
-        ],
-        showSelectedLabels: false,
-      ),
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

@@ -10,6 +10,7 @@ const Color borderColor = Color(0xFF656565);
 const Color secondaryColor = Colors.white;
 const Color backgroundColor = Color(0xFFEBEBEB);
 const Color viewDetailColor = Color(0xFF575757);
+const Color titleTextColor = Color(0xFF262626);
 const Color foodMenuColor = Color(0xFF767676);
 const Color taxTextColor = Color(0xFF383838);
 
@@ -104,6 +105,12 @@ TextStyle menuText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: headerTextColor,
         fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(15)));
+
+TextStyle titleMenu = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: titleTextColor,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(18)));
 
 TextStyle buttonText = GoogleFonts.poppins(
@@ -117,6 +124,12 @@ TextStyle namePriceMenu = GoogleFonts.poppins(
         color: headerTextColor,
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(23)));
+
+TextStyle priceMenu = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(17)));
 
 TextStyle foodMenu = GoogleFonts.poppins(
     textStyle: TextStyle(
@@ -154,6 +167,11 @@ TextStyle btnBuyText = GoogleFonts.poppins(
         color: secondaryColor,
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(25)));
+
+TextStyle labelNavbarText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(15)));
 
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";

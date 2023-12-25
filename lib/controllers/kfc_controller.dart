@@ -72,4 +72,5 @@ class KfcController extends GetxController {
     selectedCategory.value = category[index];
     fetchProduct();
   }
+
 }
