@@ -212,9 +212,14 @@ String iconNotAvailable = "assets/cancel-order.png";
 
 //Image Menu Carousel Slider
 String menuBaru = "assets/menu-baru.jpg";
-String menuBaru1 = "assets/menu-baru.jpg";
-String menuBaru2 = "assets/menu-baru.jpg";
-String menuBaru3 = "assets/menu-baru.jpg";
+String menuBaru1 = "assets/menu-baru2.jpg";
+String menuBaru2 = "assets/menu-baru3.jpg";
+String menuBaru3 = "assets/menu-baru4.jpg";
+String menuBaru4 = "assets/menu-baru5.jpg";
 
 //Image Promotion Carousel SLider
 String promotion1 = "assets/promotion-1.jpg";
+String promotion2 = "assets/promotion-2.jpeg";
+String promotion3 = "assets/promotion-3.jpg";
+String promotion4 = "assets/promotion-4.jpg";
+String promotion5 = "assets/promotion-5.png";
