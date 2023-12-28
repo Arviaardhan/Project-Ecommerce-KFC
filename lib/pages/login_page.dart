@@ -45,7 +45,6 @@ class LoginPage extends StatelessWidget {
                 ),
                 Text('Login', style: headerText),
                 Container(
-                  height: 120,
                   width: 309,
                   margin: EdgeInsets.only(top: 45),
                   child: Column(

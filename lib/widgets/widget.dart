@@ -16,15 +16,18 @@ Widget myForm(BuildContext context, String label, bool obscure, IconData icon, T
     decoration: InputDecoration(
       labelText: label,
       labelStyle: TextStyle(color: borderColor),
-      prefixIcon: Icon(
-        icon,
-        color: iconColor,
+      prefixIcon: Padding(
+        padding: EdgeInsets.only(left: 20, right: 10),
+        child: Icon(
+          icon,
+          color: iconColor,
+        ),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: borderColor),
         borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
       ),
-      contentPadding: EdgeInsets.symmetric(vertical: 12),
+      contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 50),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
       ),

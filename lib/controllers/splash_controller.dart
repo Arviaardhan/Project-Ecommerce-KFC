@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:project_ecommerce/pages/login_page.dart';
 import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../pages/home_page.dart';
 
 class SplashController extends GetxController {
   late final SharedPreferences prefs;
@@ -17,9 +21,9 @@ class SplashController extends GetxController {
     final username = prefs.getString('username');
     Future.delayed(Duration(seconds: 3), () async {
       if (username == null) {
-        Get.offNamed(RouteName.login);
+        Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(milliseconds: 600));
       } else {
-        Get.offNamed(RouteName.home);
+        Get.off(() => HomePage(), transition: Transition.circularReveal, duration: Duration(seconds: 3));
       }
     });
   }
