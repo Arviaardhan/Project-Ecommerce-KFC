@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:project_ecommerce/pages/login_page.dart';
 import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project_ecommerce/models/profile_model.dart';
@@ -32,7 +33,7 @@ class ProfileController extends GetxController {
   void logout() {
     prefs.clear();
     print(prefs);
-    Get.offAllNamed(RouteName.login);
+    Get.offAll(() => LoginPage(), transition: Transition.fade, duration: Duration(seconds: 1));
   }
 
   void changeTabIndex(int index) {

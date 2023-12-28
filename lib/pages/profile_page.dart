@@ -6,12 +6,8 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:project_ecommerce/controllers/profile_controller.dart';
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/voucher_page.dart';
-import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
 import '../widgets/navbar.dart';
-import 'home_page.dart';
-import 'order_page.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -86,17 +82,45 @@ class ProfilePage extends StatelessWidget {
             SizedBox(height: 30),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor, // Set button color
+                backgroundColor: Colors.white12, // Set button color
               ),
               onPressed: () {
-                profileController.logout();
+                _showLogoutConfirmationDialog(context);
               },
-              child: Text("Log Out"),
+              child: Text("Log Out", style: logOutText,),
             )
           ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
+    );
+  }
+
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Logout Confirmation"),
+          content: Text("Are you sure you want to log out?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                profileController.logout(); // Logout when user clicks "Yes"
+              },
+              child: Text("Yes", style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

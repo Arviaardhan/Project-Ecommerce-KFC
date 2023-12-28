@@ -39,7 +39,7 @@ class LoginController extends GetxController {
           await prefs.setString('password', ctrPassword!.text);
           print('Token : $token');
           Get.snackbar('Success', 'Login Success', duration: Duration(seconds: 3));
-          Get.off(HomePage());
+          Get.off(HomePage(), transition: Transition.circularReveal, duration: Duration(seconds: 3));
           isLoading.value = true;
         } else {
           final Map<String, dynamic> getMessage = jsonDecode(response.body);

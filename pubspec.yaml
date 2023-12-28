@@ -45,6 +45,7 @@ dependencies:
   dots_indicator: ^3.0.0
   badges: ^3.1.2
   flutter_staggered_animations: ^1.1.1
+  animated_size_and_fade: ^3.0.1
 
 dev_dependencies:
   flutter_test:

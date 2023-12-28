@@ -180,6 +180,12 @@ TextStyle btnText = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(20)));
 
+TextStyle logOutText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: primaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(20)));
+
 TextStyle labelNavbarText = GoogleFonts.poppins(
     textStyle: TextStyle(
         fontWeight: AppThemesWeight.medium,
