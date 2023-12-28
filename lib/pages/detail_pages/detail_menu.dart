@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/mdi.dart';
-import 'package:project_ecommerce/controllers/detail_menu_controller.dart';
+import 'package:project_ecommerce/controllers/kfc_controller.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:project_ecommerce/widgets/navbar.dart';
 
@@ -12,7 +12,7 @@ class DetailMenuPage extends StatelessWidget {
   final Menu menuItem;
   DetailMenuPage({required this.menuItem});
 
-  final menuController = Get.put(DetailMenuController());
+  final kfcController = Get.put(KfcController());
 
   @override
   Widget build(BuildContext context) {
@@ -63,19 +63,24 @@ class DetailMenuPage extends StatelessWidget {
                   style: foodMenu,
                 ),
               ),
-            // ElevatedButton(
-            //   onPressed: (() {
-            //     menuController.addToOrderPage(menuItem.id, menuItem.name, menuItem.food, menuItem.image, menuItem.price);
-            //   }),
-            //   child: Iconify(Mdi.cart_add, color: secondaryColor,),
-            //   style: ElevatedButton.styleFrom(
-            //       minimumSize: Size(170, 40),
-            //       backgroundColor: primaryColor,
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(10)
-            //       )
-            //   ),
-            // ),
+            Center(
+              child: Padding(
+                padding: EdgeInsets.only(top: 120),
+                child: ElevatedButton(
+                  onPressed: (() {
+                    kfcController.addToOrderPage(menuItem.name, menuItem.food, menuItem.image, menuItem.price);
+                  }),
+                  child: Iconify(Mdi.cart_add, color: secondaryColor,),
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(170, 40),
+                      backgroundColor: primaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

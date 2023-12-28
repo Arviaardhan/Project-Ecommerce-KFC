@@ -209,7 +209,7 @@ Widget myDetailCard(BuildContext context, String title, String desc, String imag
 
 Widget myHeaderPage(String title) {
   return Container(
-    width: 450 ,
+    width: 450,
     height: 50,
     child: Stack(
       children: [

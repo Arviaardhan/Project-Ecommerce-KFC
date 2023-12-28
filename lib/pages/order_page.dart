@@ -130,53 +130,79 @@ class OrderPage extends StatelessWidget {
         SizedBox(height: 10),
         Expanded(
           child: Obx(
-                () => ListView.builder(
+                () {
+              if (kfcController.kfcOrder.isEmpty) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(iconNotAvailable),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20, bottom: 20),
+                        child: Text(
+                          "Belum ada menu yang ditambahkan",
+                          style: notAvailableText,
+                        ),
+                      ),
+                      ElevatedButton(onPressed: () {Get.off(HomePage());}, child: Text("Pesan Sekarang", style: btnText,), style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryColor,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          padding: EdgeInsets.only(right: 30, left: 30, top: 5, bottom: 5)
+                      ))
+                    ],
+                  ),
+                );
+              } else {
+                // Display the list of ordered items
+                return ListView.builder(
                   padding: EdgeInsets.only(bottom: 130),
-              itemCount: kfcController.kfcOrder.length,
-              itemBuilder: (BuildContext context, int index) {
-                final orderItem = kfcController.kfcOrder[index];
-                return Card(
-                  surfaceTintColor:Colors.white,
-                  elevation: 4,
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  child: ListTile(
-                    leading: Padding(
-                      padding: EdgeInsets.only(left: 10, right: 20),
-                      child: Image.network(orderItem.image),
-                    ),
-                    title: Text(orderItem.name, style: namePriceMenu),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(padding: EdgeInsets.only(top: 10)),
-                        for (final foodItem in orderItem.food) Text(foodItem, style: foodMenu),
-                        Padding(padding: EdgeInsets.only(top: 10)),
-                        Text("Rp. ${(orderItem.price ?? 0) * orderItem.quantity}", style: namePriceMenu),
-                        Row(
+                  itemCount: kfcController.kfcOrder.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final orderItem = kfcController.kfcOrder[index];
+                    return Card(
+                      surfaceTintColor: Colors.white,
+                      elevation: 4,
+                      margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: EdgeInsets.only(left: 10, right: 20),
+                          child: Image.network(orderItem.image),
+                        ),
+                        title: Text(orderItem.name, style: namePriceMenu),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(padding: EdgeInsets.only(left: 140)),
-                            IconButton(
-                              icon: Icon(CupertinoIcons.minus_circled),
-                              onPressed: () {
-                                kfcController.updateTotalPrice(orderItem, orderItem.quantity - 1);
-                              },
-                            ),
-                            Text(orderItem.quantity.toString()),
-                            IconButton(
-                              icon: Icon(CupertinoIcons.plus_circled),
-                              onPressed: () {
-                                kfcController.updateTotalPrice(orderItem, orderItem.quantity + 1);
-                              },
+                            Padding(padding: EdgeInsets.only(top: 10)),
+                            for (final foodItem in orderItem.food) Text(foodItem, style: foodMenu),
+                            Padding(padding: EdgeInsets.only(top: 10)),
+                            Text("Rp. ${(orderItem.price ?? 0) * orderItem.quantity}", style: namePriceMenu),
+                            Row(
+                              children: [
+                                Padding(padding: EdgeInsets.only(left: 140)),
+                                IconButton(
+                                  icon: Icon(CupertinoIcons.minus_circled),
+                                  onPressed: () {
+                                    kfcController.updateTotalPrice(orderItem, orderItem.quantity - 1);
+                                  },
+                                ),
+                                Text(orderItem.quantity.toString()),
+                                IconButton(
+                                  icon: Icon(CupertinoIcons.plus_circled),
+                                  onPressed: () {
+                                    kfcController.updateTotalPrice(orderItem, orderItem.quantity + 1);
+                                  },
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 );
-              },
-            ),
+              }
+            },
           ),
         ),
       ],
