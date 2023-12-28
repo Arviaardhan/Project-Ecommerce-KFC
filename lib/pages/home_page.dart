@@ -26,19 +26,19 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   final List<String> imageMenu = [
-    menuBaru1,
+    menuBaru,
     menuBaru1,
     menuBaru2,
     menuBaru3,
-    menuBaru3,
+    menuBaru4,
   ];
 
   final List<String> imagePromotion = [
     promotion1,
-    promotion1,
-    promotion1,
-    promotion1,
-    promotion1,
+    promotion2,
+    promotion3,
+    promotion4,
+    promotion5,
   ];
 
   HomeController homeController = Get.put(HomeController());
@@ -191,7 +191,7 @@ class HomePage extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Image.asset(imageAssets, fit: BoxFit.contain,),
+        child: Image.asset(imageAssets, fit: BoxFit.cover,),
       ),
     );
   }
