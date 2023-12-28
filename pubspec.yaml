@@ -44,6 +44,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   dots_indicator: ^3.0.0
   badges: ^3.1.2
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +88,7 @@ flutter:
     - assets/paket-spesial.jpg
     - assets/avatar_placeholder.png
     - assets/menu-baru.jpg
+    - assets/cancel-order.png
 
 
   #   - images/a_dot_ham.jpeg

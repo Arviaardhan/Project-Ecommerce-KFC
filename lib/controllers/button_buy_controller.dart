@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:project_ecommerce/controllers/detail_menu_controller.dart';
 import 'package:project_ecommerce/pages/payment_pages/processing_page.dart';
 import 'package:project_ecommerce/pages/payment_pages/success_page.dart';
 

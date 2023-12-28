@@ -150,6 +150,12 @@ TextStyle orderSummary = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.regular,
         fontSize: figmaFontsize(20)));
 
+TextStyle notAvailableText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(20)));
+
 TextStyle taxText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: taxTextColor,
@@ -167,6 +173,12 @@ TextStyle btnBuyText = GoogleFonts.poppins(
         color: secondaryColor,
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(25)));
+
+TextStyle btnText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: secondaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(20)));
 
 TextStyle labelNavbarText = GoogleFonts.poppins(
     textStyle: TextStyle(
@@ -190,6 +202,7 @@ String doubleKimchi = "assets/double-kimchi.jpg";
 String alacatre = "assets/alacatre-snack.png";
 String paketCombo = "assets/combo-menu.jpg";
 String paketSpesial = "assets/paket-spesial.jpg";
+String iconNotAvailable = "assets/cancel-order.png";
 
 //Image Menu Carousel Slider
 String menuBaru = "assets/menu-baru.jpg";
