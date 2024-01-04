@@ -1,16 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 import 'package:project_ecommerce/helper/themes.dart';
-
-import '../controllers/kfc_controller.dart';
-import 'package:project_ecommerce/models/order_model.dart';
 
 // form text
 Widget myForm(BuildContext context, String label, bool obscure, IconData icon, TextInputType inputType, TextEditingController? controller) {
@@ -24,15 +16,18 @@ Widget myForm(BuildContext context, String label, bool obscure, IconData icon, T
     decoration: InputDecoration(
       labelText: label,
       labelStyle: TextStyle(color: borderColor),
-      prefixIcon: Icon(
-        icon,
-        color: iconColor,
+      prefixIcon: Padding(
+        padding: EdgeInsets.only(left: 20, right: 10),
+        child: Icon(
+          icon,
+          color: iconColor,
+        ),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: borderColor),
         borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
       ),
-      contentPadding: EdgeInsets.symmetric(vertical: 12),
+      contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 50),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(screenWidth * screenHeight * 0.025),
       ),
@@ -49,30 +44,41 @@ Widget myMenu(BuildContext context, String label, String image, Widget page) {
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
     },
-    child: Container(
-      child: Card(
-        margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-        child: Column(
-          children: <Widget>[
-            Container(
-              width: screenWidth * 0.18,
-              height: screenHeight * 0.12,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                image: DecorationImage(
-                  image: AssetImage(image),
+    child: Center(
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 7,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        width: screenWidth * 0.30,
+        margin: EdgeInsets.only(bottom: 10, right: 5, left: 5),
+        child: Card(
+          surfaceTintColor:Colors.white,
+          color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 5),
+                width: screenWidth * 0.18,
+                height: screenHeight * 0.12,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(image),
+                  ),
                 ),
               ),
-            ),
-            FittedBox(
-              fit: BoxFit.fill,
-              child: Text(
+              Text(
                 label,
                 style: menuText,
                 textAlign: TextAlign.center,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ),
@@ -86,15 +92,27 @@ Widget myRecommended(BuildContext context, String title, String subTitle, String
 
   List<Widget> starIcons = List.generate(
     starCount,
-    (index) => Iconify(MaterialSymbols.star, size: 12, color: primaryColor),
+    (index) => Iconify(MaterialSymbols.star, size: 18, color: primaryColor),
   );
 
   return GestureDetector(
     onTap: onPressed,
     child: Container(
-      width: screenWidth * 0.40,
-      height: screenHeight * 0.26,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            blurRadius: 10,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      margin: EdgeInsets.only(bottom: 20, right: 10),
+      width: screenWidth * 0.65,
+      height: screenHeight * 0.39,
       child: Card(
+        surfaceTintColor:Colors.white,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -102,7 +120,7 @@ Widget myRecommended(BuildContext context, String title, String subTitle, String
         child: Column(
           children: <Widget>[
             Container(
-              height: screenHeight * 0.11,
+              height: screenHeight * 0.22,
               decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.rectangle,
@@ -111,35 +129,32 @@ Widget myRecommended(BuildContext context, String title, String subTitle, String
                     topRight: Radius.circular(10)),
                 image: DecorationImage(
                   image: AssetImage(image),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 10, top: 7),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: recommendedText),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Row(
-                      children: [
-                        Text(subTitle, style: detailText),
-                        Padding(
-                          padding: EdgeInsets.only(left: 20),
-                          child: Row(
-                            children: starIcons,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, bottom: 30),
+                  child: Text(title, style: recommendedText),
                 ),
-              ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(subTitle, style: detailText),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 50),
+                      child: Row(
+                        children: starIcons,
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ],
         ),
@@ -196,9 +211,8 @@ Widget myDetailCard(BuildContext context, String title, String desc, String imag
 }
 
 Widget myHeaderPage(String title) {
-
   return Container(
-    width: 450 ,
+    width: 450,
     height: 50,
     child: Stack(
       children: [
@@ -241,50 +255,3 @@ Widget buildDragIcon() {
     ),
   );
 }
-
-// Widget myAddButton(BuildContext context, String label, String icon, KfcController kfcController, int index) {
-//
-//   return Container(
-//       height: 35,
-//       width: 100,
-//       child: ElevatedButton(
-//           onPressed: () {
-//
-//             Get.snackbar (
-//               'Item Added',
-//               'Telah ditambahkan ke Order Page',
-//               snackPosition: SnackPosition.TOP,
-//               duration: Duration(seconds: 3),
-//             );
-//
-//               final OrderModel menuItem = kfcController.kfcOrder[index];
-//
-//               final OrderModel orderModel = OrderModel(
-//                 name: menuItem.name,
-//                 food: menuItem.food,
-//                 image: menuItem.image,
-//                 price: menuItem.price ?? 0.0,
-//                 quantity: 1,
-//               );
-//
-//               kfcController.addToOrderPage(menuItem);
-//           },
-//
-//           style: ElevatedButton.styleFrom(
-//             backgroundColor: primaryColor,
-//             shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(20)
-//             )
-//           ),
-//
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Iconify(icon, color: Colors.white, size: 24,),
-//               SizedBox(width: 5,),
-//               Text(label, style: textIcon,),
-//             ],
-//           )
-//       )
-//   );
-// }

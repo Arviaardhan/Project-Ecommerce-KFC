@@ -1,16 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_ecommerce/helper/themes.dart';
 import 'package:get/get.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
-import 'package:project_ecommerce/pages/login_page.dart';
 import 'package:project_ecommerce/controllers/register_controller.dart';
+import 'package:project_ecommerce/widgets/widget.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final registerController = Get.find<RegisterController>();
+    final registerController = Get.put(RegisterController());
 
     return Scaffold(
       body: Column(
@@ -24,9 +24,7 @@ class RegisterPage extends StatelessWidget {
             'Jagonya ayam',
             style: logoText,
           ),
-          SizedBox(
-            height: 50,
-          ),
+          SizedBox(height: 30),
           Container(
             height: 490,
             width: 350,
@@ -45,98 +43,62 @@ class RegisterPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
-                Text(
-                  'Register',
-                  style: headerText,
-                ),
-                SizedBox(
-                  height: 20, // Adjusted the height
-                ),
+                Text('Register', style: headerText),
                 Container(
-                  height: 55,
-                  width: 300,
-                  child: TextField(
-                    controller:
-                        registerController.cUsername, // Added controller
-                    decoration: InputDecoration( 
-                      prefixIcon: Icon(Icons.person, color: iconColor),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: primaryColor),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      hintText: 'Username', // Changed hint to 'Username'
-                      hintStyle: hintText,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
+                  width: 309,
+                  margin: EdgeInsets.only(top: 45),
+                  child: Column(
+                    children: [
+                      myForm(context, 'Username', false, CupertinoIcons.person,
+                          TextInputType.emailAddress, registerController.cUsername),
+                      SizedBox(height: 20,),
+                      myForm(context, 'Email', false, Icons.email_outlined,
+                          TextInputType.emailAddress, registerController.cEmail),
+                      SizedBox(height: 20),
+                      myForm(context, 'Password', true, Icons.lock_outline,
+                          TextInputType.visiblePassword, registerController.cPass),
+                    ],
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
-                Container(
-                  height: 55,
-                  width: 300,
-                  child: TextField(
-                    controller: registerController.cEmail, // Added controller
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email_outlined, color: iconColor),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: primaryColor),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      hintText: 'Email',
-                      hintStyle: hintText,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  height: 55,
-                  width: 300,
-                  child: TextField(
-                    controller: registerController.cPass,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock, color: iconColor),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: primaryColor),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      hintText: 'Password',
-                      hintStyle: hintText,
-                      contentPadding: EdgeInsets.symmetric(vertical: 5),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    registerController.Register();
+                InkWell(
+                  mouseCursor: SystemMouseCursors.click,
+                  onTap: () {
+                    Get.toNamed("/login");
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    minimumSize: Size(250, 52),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Do you have an account?',
+                        style: anotherText,
+                      ),
+                      SizedBox(width: 12),
+                      Text('Login here', style: linkText),
+                    ],
                   ),
-                  child: Text('Register', style: buttonText),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                MouseRegion(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      registerController.Register();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      minimumSize: Size(250, 52),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: Text('Register', style: buttonText),
+                  ),
                 ),
               ],
             ),

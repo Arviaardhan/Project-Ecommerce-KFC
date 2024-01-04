@@ -6,12 +6,8 @@ import 'package:project_ecommerce/helper/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:project_ecommerce/controllers/profile_controller.dart';
 import 'package:get/get.dart';
-import 'package:project_ecommerce/pages/splash_screen.dart';
-import 'package:project_ecommerce/pages/voucher_page.dart';
 import 'package:project_ecommerce/widgets/widget.dart';
-
-import 'home_page.dart';
-import 'order_page.dart';
+import '../widgets/navbar.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -22,19 +18,17 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             myHeaderPage("Profile"),
-            Obx(() => Text('user logged ' + profileController.strName.value)),
-            Image(image: AssetImage(logoUser), width: 100, height: 100,),
-            ElevatedButton(onPressed: (() => SplashScreen()), child: Text("Log Out")),
+            Padding(padding: EdgeInsets.only(top: 30)),
             CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage(imageUser),
             ),
             SizedBox(height: 20),
             Obx(() => Text(
-                  'Hello, ${profileController.userProfile.value.fullName}!',
+                  'Hello, ${profileController.userProfile.value.username}!',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )),
             SizedBox(height: 10),
@@ -78,7 +72,7 @@ class ProfilePage extends StatelessWidget {
                     Icon(Icons.email, color: primaryColor),
                     SizedBox(width: 10),
                     Obx(() => Text(
-                          ' ${profileController.userProfile.value.email}',
+                          ' ${profileController.userProfile.value.password}',
                           style: TextStyle(fontSize: 16),
                         )),
                   ],
@@ -88,55 +82,45 @@ class ProfilePage extends StatelessWidget {
             SizedBox(height: 30),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Color(0xFFD41313), // Set button color
+                backgroundColor: Colors.white12, // Set button color
               ),
               onPressed: () {
-                Get.to(() => SplashScreen());
+                _showLogoutConfirmationDialog(context);
               },
-              child: Text("Log Out"),
+              child: Text("Log Out", style: logOutText,),
             )
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Iconify(Heroicons.home_solid, color: primaryColor),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.only(right: 30),
-              child: IconButton(
-                onPressed: () {
-                  Get.to(() => OrderPage());
-                },
-                icon: Iconify(Mdi.cart_outline, color: primaryColor),
+      bottomNavigationBar: CustomBottomNavigationBar(),
+    );
+  }
+
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Logout Confirmation"),
+          content: Text("Are you sure you want to log out?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text("No"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+                profileController.logout(); // Logout when user clicks "Yes"
+              },
+              child: Text("Yes", style: TextStyle(color: Colors.red),
               ),
             ),
-            label: "My Order",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => VoucherPage());
-              },
-              icon: Iconify(Mdi.voucher_outline, color: primaryColor),
-            ),
-            label: "Voucher",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Get.to(() => ProfilePage());
-              },
-              icon: Iconify(Mdi.user_circle_outline, color: primaryColor),
-            ),
-            label: "Profile",
-          ),
-        ],
-        showSelectedLabels: false,
-      ),
+          ],
+        );
+      },
     );
   }
 }

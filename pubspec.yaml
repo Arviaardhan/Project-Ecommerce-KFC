@@ -40,6 +40,12 @@ dependencies:
   shared_preferences: ^2.2.2
   evil_icons_flutter: ^0.5.0
   sliding_up_panel: ^2.0.0+1
+  carousel_slider: ^4.2.1
+  smooth_page_indicator: ^1.1.0
+  dots_indicator: ^3.0.0
+  badges: ^3.1.2
+  flutter_staggered_animations: ^1.1.1
+  animated_size_and_fade: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -67,20 +73,31 @@ flutter:
   assets:
     - assets/logo-kfc-removebg-preview.png
     - assets/homepage-image.png
-    - assets/delivery.jpeg
-    - assets/take-away.png
-    - assets/dine-in.jpeg
-    - assets/drive-thru.jpeg
-    - assets/catering.jpeg
+    - assets/delivery.png
+    - assets/catering.png
+    - assets/dine-in.png
+    - assets/drive-thru.png
+    - assets/take-aways.png
     - assets/b-day.jpeg
+    - assets/promotion-1.jpg
+    - assets/promotion-2.jpeg
+    - assets/promotion-3.jpg
+    - assets/promotion-4.jpg
+    - assets/promotion-5.png
     - assets/corn-roasted.jpg
     - assets/double-kimchi.jpg
     - assets/kfc-snck-bucket.png
     - assets/super-komplit.jpg
     - assets/alacatre-snack.png
-    - assets/paket-combo.jpg
+    - assets/combo-menu.jpg
     - assets/paket-spesial.jpg
     - assets/avatar_placeholder.png
+    - assets/menu-baru.jpg
+    - assets/menu-baru2.jpg
+    - assets/menu-baru3.jpg
+    - assets/menu-baru4.jpg
+    - assets/menu-baru5.jpg
+    - assets/cancel-order.png
 
 
   #   - images/a_dot_ham.jpeg

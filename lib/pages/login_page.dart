@@ -45,7 +45,6 @@ class LoginPage extends StatelessWidget {
                 ),
                 Text('Login', style: headerText),
                 Container(
-                  height: 120,
                   width: 309,
                   margin: EdgeInsets.only(top: 45),
                   child: Column(
@@ -53,13 +52,8 @@ class LoginPage extends StatelessWidget {
                       myForm(context, 'Email', false, Icons.email_outlined,
                           TextInputType.emailAddress, controller.ctrEmail),
                       SizedBox(height: 20),
-                      myForm(
-                          context,
-                          'Password',
-                          true,
-                          Icons.lock_outline,
-                          TextInputType.visiblePassword,
-                          controller.ctrPassword),
+                      myForm(context, 'Password', true, Icons.lock_outline,
+                          TextInputType.visiblePassword, controller.ctrPassword),
                     ],
                   ),
                 ),

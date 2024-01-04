@@ -9,6 +9,7 @@ class VoucherController extends GetxController {
   RxList<VoucherResponseModel> voucherresponsemodel = <VoucherResponseModel>[].obs;
   RxList<Menu> vouchers = <Menu>[].obs;
   var isLoading = true.obs;
+  RxInt selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -29,6 +30,10 @@ class VoucherController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
   }
 
 }

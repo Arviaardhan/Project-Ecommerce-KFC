@@ -9,10 +9,10 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFD41313),
+      backgroundColor: Color(0xFF9C1010),
       body: Center(
         child: Container(
-          child: Image.asset(logoKFC),
+          child: Image.asset(logoKFC, width: 400, height: 400,),
         ),
       ),
     );

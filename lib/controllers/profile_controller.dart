@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:project_ecommerce/pages/login_page.dart';
+import 'package:project_ecommerce/routes/route_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project_ecommerce/models/profile_model.dart';
 
@@ -8,7 +10,9 @@ class ProfileController extends GetxController {
     username: "No Data",
     fullName: "No Data",
     email: "No Data",
+    password: "No Data",
   ).obs;
+  RxInt selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -22,6 +26,17 @@ class ProfileController extends GetxController {
       username: prefs.getString('username') ?? "No Data",
       fullName: prefs.getString('fullName') ?? "No Data",
       email: prefs.getString('email') ?? "No Data",
+      password: prefs.getString('password') ?? "No Data",
     );
+  }
+
+  void logout() {
+    prefs.clear();
+    print(prefs);
+    Get.offAll(() => LoginPage(), transition: Transition.fade, duration: Duration(seconds: 1));
+  }
+
+  void changeTabIndex(int index) {
+    selectedIndex.value = index;
   }
 }

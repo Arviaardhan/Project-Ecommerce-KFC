@@ -54,7 +54,16 @@ class KfcController extends GetxController {
   }
 
   void addToOrderPage(String name, List<String> food, String image, double price) {
-    kfcOrder.add(OrderModel(name: name, food: food, image: image, price: price));
+    OrderModel existingOrder = kfcOrder.firstWhere((order) => order.name == name,
+        orElse: () => OrderModel(name: name, food: food, image: image, price: price)
+    );
+
+    if (kfcOrder.contains(existingOrder)) {
+      int index = kfcOrder.indexOf(existingOrder);
+      kfcOrder[index].quantity++;
+    } else {
+      kfcOrder.add(OrderModel(name: name, food: food, image: image, price: price));
+    }
     kfcOrder.refresh();
   }
 
@@ -72,4 +81,5 @@ class KfcController extends GetxController {
     selectedCategory.value = category[index];
     fetchProduct();
   }
+
 }

@@ -10,6 +10,7 @@ const Color borderColor = Color(0xFF656565);
 const Color secondaryColor = Colors.white;
 const Color backgroundColor = Color(0xFFEBEBEB);
 const Color viewDetailColor = Color(0xFF575757);
+const Color titleTextColor = Color(0xFF262626);
 const Color foodMenuColor = Color(0xFF767676);
 const Color taxTextColor = Color(0xFF383838);
 
@@ -58,22 +59,34 @@ TextStyle headerText3 = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(22)));
 
+TextStyle headerText4 = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(25)));
+
 TextStyle recommendedText = GoogleFonts.poppins(
     textStyle: TextStyle(
-        color: primaryColor,
+        color: headerTextColor,
         fontWeight: AppThemesWeight.semiBold,
-        fontSize: figmaFontsize(15)));
+        fontSize: figmaFontsize(30)));
 
 TextStyle detailText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: viewDetailColor,
         fontWeight: AppThemesWeight.medium,
-        fontSize: figmaFontsize(9)));
+        fontSize: figmaFontsize(14)));
 
 TextStyle hintText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: hintTextColor,
         fontWeight: AppThemesWeight.regular,
+        fontSize: figmaFontsize(20)));
+
+TextStyle hintTextSearch = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: hintTextColor,
+        fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(20)));
 
 TextStyle anotherText = GoogleFonts.poppins(
@@ -94,6 +107,12 @@ TextStyle menuText = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(15)));
 
+TextStyle titleMenu = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: titleTextColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(18)));
+
 TextStyle buttonText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: secondaryColor,
@@ -105,6 +124,12 @@ TextStyle namePriceMenu = GoogleFonts.poppins(
         color: headerTextColor,
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(23)));
+
+TextStyle priceMenu = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(17)));
 
 TextStyle foodMenu = GoogleFonts.poppins(
     textStyle: TextStyle(
@@ -125,6 +150,12 @@ TextStyle orderSummary = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.regular,
         fontSize: figmaFontsize(20)));
 
+TextStyle notAvailableText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: headerTextColor,
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(20)));
+
 TextStyle taxText = GoogleFonts.poppins(
     textStyle: TextStyle(
         color: taxTextColor,
@@ -143,20 +174,52 @@ TextStyle btnBuyText = GoogleFonts.poppins(
         fontWeight: AppThemesWeight.semiBold,
         fontSize: figmaFontsize(25)));
 
+TextStyle btnText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: secondaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(20)));
+
+TextStyle logOutText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        color: primaryColor,
+        fontWeight: AppThemesWeight.semiBold,
+        fontSize: figmaFontsize(20)));
+
+TextStyle labelNavbarText = GoogleFonts.poppins(
+    textStyle: TextStyle(
+        fontWeight: AppThemesWeight.medium,
+        fontSize: figmaFontsize(15)));
+
 // IMAGE ASSETS
 String logoKFC = "assets/logo-kfc-removebg-preview.png";
 String imageUser = "assets/avatar_placeholder.png";
 String imageHomepage = "assets/homepage-image.png";
-String delivery = "assets/delivery.jpeg";
-String takeAway = "assets/take-away.png";
-String dineIn = "assets/dine-in.jpeg";
-String driveThru = "assets/drive-thru.jpeg";
-String catering = "assets/catering.jpeg";
+String delivery = "assets/delivery.png";
+String takeAway = "assets/take-aways.png";
+String dineIn = "assets/dine-in.png";
+String driveThru = "assets/drive-thru.png";
+String catering = "assets/catering.png";
 String birthDay = "assets/b-day.jpeg";
 String superKomplit = "assets/super-komplit.jpg";
 String cornRoasted = "assets/corn-roasted.jpg";
 String snackBucket = "assets/kfc-snck-bucket.png";
 String doubleKimchi = "assets/double-kimchi.jpg";
 String alacatre = "assets/alacatre-snack.png";
-String paketCombo = "assets/paket-combo.jpg";
+String paketCombo = "assets/combo-menu.jpg";
 String paketSpesial = "assets/paket-spesial.jpg";
+String iconNotAvailable = "assets/cancel-order.png";
+
+//Image Menu Carousel Slider
+String menuBaru = "assets/menu-baru.jpg";
+String menuBaru1 = "assets/menu-baru2.jpg";
+String menuBaru2 = "assets/menu-baru3.jpg";
+String menuBaru3 = "assets/menu-baru4.jpg";
+String menuBaru4 = "assets/menu-baru5.jpg";
+
+//Image Promotion Carousel SLider
+String promotion1 = "assets/promotion-1.jpg";
+String promotion2 = "assets/promotion-2.jpeg";
+String promotion3 = "assets/promotion-3.jpg";
+String promotion4 = "assets/promotion-4.jpg";
+String promotion5 = "assets/promotion-5.png";

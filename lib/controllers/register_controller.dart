@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:project_ecommerce/pages/home_page.dart';
 import 'package:project_ecommerce/routes/route_name.dart';
 
 class RegisterController extends GetxController {
@@ -48,7 +49,7 @@ class RegisterController extends GetxController {
             "$message",
             duration: Duration(seconds: 3),
           );
-          Get.offNamed(RouteName.home);
+          Get.off(HomePage(), transition: Transition.circularReveal, duration: Duration(seconds: 3));
         } else if (status == false) {
           final message = getData["message"];
           print("message : $message");
