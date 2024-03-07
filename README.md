@@ -1,4 +1,4 @@
-# project_ecommerce
+# Project-Ecommerce-KFC
 
 A new Flutter project.
 
